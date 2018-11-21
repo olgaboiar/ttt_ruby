@@ -2,8 +2,8 @@ require 'yaml'
 
 class UserMessages
   def initialize(language)
-    @trans = YAML::load_file(File.join(__dir__, '../en.yml')) if language == "1"
-    @trans = YAML::load_file(File.join(__dir__, '../ua.yml')) if language == "2"
+    @trans = YAML::load_file(File.join(__dir__, '../languages/en.yml')) if language == "1"
+    @trans = YAML::load_file(File.join(__dir__, '../languages/ua.yml')) if language == "2"
 
   end
 
