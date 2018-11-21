@@ -5,9 +5,9 @@ describe Setup do
   before do
     allow_any_instance_of(BoardSize).to receive(:set_size).and_return("3")
     markers = Marker.new
-    @board = Board.new(@input, @messages, markers)
-    @input = UserInput.new
-    board_size = BoardSize.new(@input, @messages)
+    @board = Board.new(@input, markers)
+    @input = UserInteraction.new
+    board_size = BoardSize.new(@input)
     @setup = Setup.new(board_size.set_size)
   end
 

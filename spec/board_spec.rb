@@ -5,12 +5,11 @@ describe Board do
   before do
     allow_any_instance_of(BoardSize).to receive(:set_size).and_return("3")
     @markers = Marker.new
-    @input = UserInput.new
+    @input = UserInteraction.new
     language = Language.new(@input)
     allow_any_instance_of(Language).to receive(:set_lang).and_return("1")
-    @messages = UserMessages.new(language.set_lang)
-    @board = Board.new(@input, @messages, @markers)
-    @board_size = BoardSize.new(@input, @messages)
+    @board = Board.new(@input, @markers)
+    @board_size = BoardSize.new(@input)
     @setup = Setup.new(@board_size.set_size)
   end
 

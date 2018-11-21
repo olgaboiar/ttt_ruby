@@ -1,19 +1,18 @@
 class Human 
 
-  attr_accessor :messages, :input, :name
+  attr_accessor :input, :name
   
-  def initialize(input, messages, name)
-    @messages = messages
-    @input = input
+  def initialize(ui, name)
+    @ui = ui
     @name = name
   end
 
   def set_spot(board,hum)
     spot = nil
     until spot
-      spot = input.get_input
-      return spot.to_i - 1 if input.valid(spot)
-      messages.entering_number
+      spot = @ui.get_input
+      return spot.to_i - 1 if @ui.valid(spot)
+      @ui.entering_number
       spot = nil
     end
   end
@@ -21,9 +20,9 @@ class Human
   def set_symbol
     hum = nil
     until hum
-      @messages.choosing_symbol
-      symbol = input.get_input
-      hum = input.check_symbol(symbol)
+      @ui.choosing_symbol
+      symbol = @ui.get_input
+      hum = @ui.check_symbol(symbol)
     end
     return hum
   end

@@ -1,16 +1,16 @@
 class Language
 
-  def initialize(input)
-    @input = input
+  def initialize(ui)
+    @ui = ui
   end
 
   def set_lang
     lang = nil
-    @input.choose_lang
+    @ui.choose_lang
     until lang
-      lang = @input.get_input
-      return lang if @input.valid_lang(lang)
-      @input.choose_lang
+      lang = @ui.get_input
+      return lang if @ui.valid_lang(lang)
+      @ui.choose_lang
       lang = nil
     end
   end
