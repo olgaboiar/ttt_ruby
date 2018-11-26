@@ -7,7 +7,12 @@ class Human
     @name = name
   end
 
+  def name
+    @name
+  end
+
   def set_spot(board,hum)
+    @ui.entering_number
     spot = nil
     until spot
       spot = @ui.get_input
@@ -27,8 +32,16 @@ class Human
     return hum
   end
 
-  def move(board, symbol, spot)
-    board.insert_value(spot, symbol)
+  def move(board, symbol)
+    spot = self.set_spot(board,symbol)
+    until board.valid(board.get_value(spot))
+      @ui.space_taken
+      spot = self.set_spot(board,symbol)
+    end
+    if board.valid(board.get_value(spot))
+      board.insert_value(spot, symbol)
+      # @ui.great_move      
+    end
   end
-  
+
 end

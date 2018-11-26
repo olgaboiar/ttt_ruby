@@ -3,7 +3,8 @@ require_relative "../lib/computer"
 describe Computer do
   before do
     @markers = Marker.new
-    @computer = Computer.new(@markers)
+    @ui = UserInteraction.new
+    @computer = Computer.new(@ui, @markers, "Computer")
   end
 
   describe "#set_opponent(symbol)" do

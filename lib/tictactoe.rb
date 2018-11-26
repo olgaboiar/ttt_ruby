@@ -2,25 +2,52 @@ require_relative "console/user_interaction"
 
 class TicTacToe
 
-  def initialize(player1, player2, board, ui)
-    @player1 = player1
-    @player2 = player2
+  def initialize(players, board, ui)
+    @players = players
     @board = board
     @ui = ui
   end
 
-  def play(board, hum, com)
+  def set_current_player(hum, com, human, computer)
+    if hum == "X"
+      @current_player_marker = hum
+      @other_player_marker = com
+      @current_player = human
+      @other_player = computer
+    else
+      @current_player_marker = com
+      @other_player_marker = hum
+      @current_player = computer
+      @other_player = human
+    end
+  end
+
+  def current_player
+    @current_player
+  end
+
+  def other_player
+    @other_player
+  end
+
+  def current_player_marker
+    @current_player_marker
+  end
+
+  def other_player_marker
+    @other_player_marker
+  end
+
+  def play(board)
+    current_player = self.current_player
+    other_player = self.other_player
+    current_player_marker = self.current_player_marker
+    other_player_marker = self.other_player_marker
     until board.game_over
-      @ui.entering_number
-      spot = @player1.set_spot(board, hum)
-      @ui.space_taken if !board.valid(board.get_value(spot))
-      if board.valid(board.get_value(spot))
-        @player1.move(board,hum,spot)
-        @ui.great_move
-        @player2.move(board,com) if !board.game_over
-        board.print_board
-        @ui.computer_move
-      end
+      current_player.move(board,current_player_marker)
+      board.print_board
+      current_player_marker, other_player_marker = other_player_marker, current_player_marker
+      current_player, other_player = other_player, current_player
     end
     @ui.game_over
     self.declare_winner if board.win
@@ -35,4 +62,5 @@ class TicTacToe
     winner = @board.last_move
     @ui.declaring_winner(winner)
   end
+
 end

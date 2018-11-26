@@ -41,6 +41,14 @@ class UserInteraction
     puts @trans[:greeting]
   end
 
+  def first(player)
+    puts player + " " + @trans[:first]
+  end
+
+  def board
+    puts @trans[:board]
+  end
+
   def choosing_symbol
     puts @trans[:choosing_symbol]
   end
@@ -57,8 +65,8 @@ class UserInteraction
     puts @trans[:space_taken]
   end
 
-  def computer_move
-    puts @trans[:computer_move]
+  def computer_move(spot)
+    puts @trans[:computer_move] + " " + spot.to_s + " " + @trans[:your_move]
   end
 
   def great_move

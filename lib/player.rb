@@ -6,4 +6,8 @@ class Player
     @name = name
   end
 
+  def move(board, symbol, spot)
+    board.insert_value(spot, symbol)
+  end
+
 end

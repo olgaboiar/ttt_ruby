@@ -17,14 +17,19 @@ class Game
     ui.bye if !ui.positive(response)
     if ui.positive(response)
       markers = Marker.new
-      player1 = Human.new(ui, "Vasya")
-      player2 = Computer.new(markers)
+      @human = Human.new(ui, "Vasya")
+      @computer = Computer.new(ui, markers, "Computer")
       board = Board.new(ui, markers)
-      tictactoe = TicTacToe.new(player1, player2, board, ui)
-      @hum = player1.set_symbol
-      @com = player2.set_symbol(@hum)
+      players = [@human, @computer]
+      tictactoe = TicTacToe.new(players, board, ui)
+      @hum = @human.set_symbol
+      @com = @computer.set_symbol(@hum)
+      tictactoe.set_current_player(@hum, @com, @human, @computer)
+      @current_player = tictactoe.current_player
+      ui.board
       board.print_board
-      tictactoe.play(board, @hum, @com)
+      ui.first(@current_player.name)
+      tictactoe.play(board)
     end
   end
 end
