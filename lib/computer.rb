@@ -2,10 +2,11 @@ class Computer
 
   attr_accessor :markers
 
-  def initialize(ui, markers, name)
+  def initialize(ui, markers, name, difficulty)
     @markers = markers
     @name = name
     @ui = ui
+    @difficulty = difficulty
   end
   
   def set_opponent(symbol)
@@ -33,8 +34,10 @@ class Computer
 
   def move(board, symbol)
     set_opponent(symbol)
-    set_best_move(board, @opponent) if board.available_spots.length <= 9
-    @best_move = get_random_move(board) if board.available_spots.length >= 10
+    # set_best_move(board, @opponent) if board.available_spots.length <= 9
+    # @best_move = get_random_move(board) if board.available_spots.length >= 10
+    set_best_move(board, @opponent) if @difficulty == 2
+    @best_move = get_random_move(board) if @difficulty == 1
     board.insert_value(@best_move.to_i - 1, symbol)
     @ui.computer_move(@best_move)
   end

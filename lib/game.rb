@@ -17,8 +17,12 @@ class Game
     ui.bye if !ui.positive(response)
     if ui.positive(response)
       markers = Marker.new
-      @human = Human.new(ui, "Vasya")
-      @computer = Computer.new(ui, markers, "Computer")
+      ui.user_name
+      human_name = ui.get_input
+      @human = Human.new(ui, human_name)
+      ui.difficulty_level
+      difficulty = ui.get_input.to_i
+      @computer = Computer.new(ui, markers, "Computer", difficulty)
       board = Board.new(ui, markers)
       players = [@human, @computer]
       tictactoe = TicTacToe.new(players, board, ui)
