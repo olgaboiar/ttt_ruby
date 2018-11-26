@@ -26,28 +26,12 @@ class TicTacToe
     @current_player
   end
 
-  def other_player
-    @other_player
-  end
-
-  def current_player_marker
-    @current_player_marker
-  end
-
-  def other_player_marker
-    @other_player_marker
-  end
-
   def play(board)
-    current_player = self.current_player
-    other_player = self.other_player
-    current_player_marker = self.current_player_marker
-    other_player_marker = self.other_player_marker
     until board.game_over
-      current_player.move(board,current_player_marker)
+      @current_player.move(board,@current_player_marker)
       board.print_board
-      current_player_marker, other_player_marker = other_player_marker, current_player_marker
-      current_player, other_player = other_player, current_player
+      @current_player_marker, @other_player_marker = @other_player_marker, @current_player_marker
+      @current_player, @other_player = @other_player, @current_player
     end
     @ui.game_over
     self.declare_winner if board.win
