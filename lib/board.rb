@@ -50,5 +50,4 @@ class Board
     end
     available_spots
   end
-
 end

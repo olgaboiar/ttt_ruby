@@ -42,5 +42,4 @@ class Human
       # @ui.great_move      
     end
   end
-
 end

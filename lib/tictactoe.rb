@@ -1,6 +1,7 @@
-require_relative "console/user_interaction"
-
+require_relative 'console/user_interaction'
+# This class handles everything related to tictactoe game rules
 class TicTacToe
+  attr_reader :current_player
 
   def initialize(players, board, ui)
     @players = players
@@ -9,7 +10,7 @@ class TicTacToe
   end
 
   def set_current_player(hum, com, human, computer)
-    if hum == "X"
+    if hum == 'X'
       @current_player_marker = hum
       @other_player_marker = com
       @current_player = human
@@ -22,13 +23,9 @@ class TicTacToe
     end
   end
 
-  def current_player
-    @current_player
-  end
-
   def play(board)
     until board.game_over
-      @current_player.move(board,@current_player_marker)
+      @current_player.move(board, @current_player_marker)
       board.print_board
       @current_player_marker, @other_player_marker = @other_player_marker, @current_player_marker
       @current_player, @other_player = @other_player, @current_player
@@ -46,5 +43,4 @@ class TicTacToe
     winner = @board.last_move
     @ui.declaring_winner(winner)
   end
-
 end

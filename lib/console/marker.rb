@@ -12,5 +12,4 @@ class Marker
   def o
     @o_marker
   end
-
 end

@@ -46,5 +46,4 @@ class Game
     @difficulty = @ui.get_input.to_i
     return @difficulty
   end
-
 end

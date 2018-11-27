@@ -9,5 +9,4 @@ class Player
   def move(board, symbol)
     board.insert_value(spot, symbol)
   end
-
 end
