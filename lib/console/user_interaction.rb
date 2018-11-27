@@ -29,7 +29,7 @@ class UserInteraction
     return argument if argument.to_i <= 9 && argument.to_i > 1
   end
 
-  def set_translation(lang)
+  def choose_translation(lang)
     @trans = YAML.load_file(File.join(__dir__, '../lang/en.yml')) if lang == '1'
     @trans = YAML.load_file(File.join(__dir__, '../lang/ua.yml')) if lang == '2'
   end

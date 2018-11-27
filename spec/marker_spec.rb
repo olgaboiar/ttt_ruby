@@ -1,4 +1,4 @@
-require_relative "../lib/console/marker"
+require_relative '../lib/console/marker'
 
 describe Marker do
     
@@ -6,18 +6,17 @@ describe Marker do
     @markers = Marker.new
   end
 
-  describe "#x" do
-    it "should return X" do
+  describe ' #x' do
+    it 'should return X' do
       actual = @markers.x
-      expect(actual).to eq("X")
+      expect(actual).to eq('X')
     end
   end
 
-  describe "#o" do
-    it "should return O" do
+  describe ' #o' do
+    it 'should return O' do
       actual = @markers.o
-      expect(actual).to eq("O")
+      expect(actual).to eq('O')
     end
   end
-
 end

@@ -1,3 +1,4 @@
+# Parent class for Human and Computer
 class Player
   attr_accessor :name
 

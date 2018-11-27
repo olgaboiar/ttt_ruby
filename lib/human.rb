@@ -2,8 +2,8 @@
 class Human
   attr_accessor :input, :name
 
-  def initialize(ui, name)
-    @ui = ui
+  def initialize(userinteraction, name)
+    @ui = userinteraction
     @name = name
   end
 

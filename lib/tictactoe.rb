@@ -3,21 +3,30 @@ require_relative 'console/user_interaction'
 class TicTacToe
   attr_reader :current_player
 
-  def initialize(players, board, ui)
+  def initialize(players, board, userinteraction)
     @players = players
     @board = board
-    @ui = ui
+    @ui = userinteraction
   end
 
   def set_current_player(hum, com, human, computer)
+    set_current_marker(hum, com)
+    if hum == 'X'
+      @current_player = human
+      @other_player = computer
+    else
+      @current_player = computer
+      @other_player = human
+    end
+  end
+
+  def set_current_marker(hum, com)
     if hum == 'X'
       @current_marker = hum
       @other_marker = com
-      @current_player, @other_player = human, computer
     else
       @current_marker = com
       @other_marker = hum
-      @current_player, @other_player = computer, human
     end
   end
 

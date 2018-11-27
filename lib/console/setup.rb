@@ -18,33 +18,67 @@ class Setup
 
   def print_board
     matrix = @board.each_slice(@argument).to_a
+    create_output(matrix)
+  end
+
+  def create_output(matrix)
     puts ' '
     (0..@index).each do |i|
-      (0..@index).each do |j|
-        print "  #{matrix[i][j]} |" if matrix[i][j].length == 1
-        print " #{matrix[i][j]} |" if matrix[i][j].length > 1
-      end
-      print "\n"
-      puts '----+' * @argument
+      row = matrix[i]
+      create_cells(row)
+      create_border
     end
+  end
+
+  def create_cells(row)
+    (0..@index).each do |j|
+      print "  #{row[j]} |" if row[j].length == 1
+      print " #{row[j]} |" if row[j].length > 1
+    end
+  end
+
+  def create_border
+    print "\n"
+    puts '----+' * @argument
   end
 
   def win
     matrix = @board.each_slice(@argument).to_a
     verticals = Array.new(@argument) { Array.new(@argument) }
     diagonals = Array.new(2) { [] }
-    (0..@index).each do |i|
-      return true if matrix[i].uniq.length == 1
+    create_vert_diag(matrix, verticals, diagonals)
+    return true if win_horizontals(matrix)
+    return true if win_verticals(verticals)
+    return true if win_diagonals(diagonals)
 
+    false
+  end
+
+  def create_vert_diag(matrix, verticals, diagonals)
+    (0..@index).each do |i|
       diagonals[0] << matrix[i][i]
       diagonals[1] << matrix[i][@index - i]
       (0..@index).each do |j|
         verticals[j][i] = matrix[i][j]
       end
     end
+  end
+
+  def win_horizontals(matrix)
+    (0..@index).each do |i|
+      return true if matrix[i].uniq.length == 1
+    end
+    false
+  end
+
+  def win_verticals(verticals)
     (0..@index).each do |i|
       return true if verticals[i].uniq.length == 1
     end
+    false
+  end
+
+  def win_diagonals(diagonals)
     (0..1).each do |i|
       return true if diagonals[i].uniq.length == 1
     end
