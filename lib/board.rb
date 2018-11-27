@@ -20,9 +20,9 @@ class Board
   def win
     @setup.win
   end
-  
+
   def tie
-    return true if self.available_spots.length == 0
+    return true if available_spots.length.zero?
   end
 
   def game_over

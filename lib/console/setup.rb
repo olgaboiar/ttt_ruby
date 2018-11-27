@@ -1,5 +1,7 @@
 # This class is responsible to print out the board properly into console
-# Note for future refactoring: get rid of this class, move board printing related methods to ui class, board array method to board class, and win method to tictactoe class
+# Note for future refactoring: get rid of this class, move board printing
+# related methods to ui class, board array method to board class, and win
+# method to tictactoe class
 class Setup
   def initialize(argument)
     @argument = argument.to_i
