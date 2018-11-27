@@ -1,34 +1,41 @@
-require_relative "console/user_messages"
-require_relative "console/user_input"
+require_relative "console/user_interaction"
 
 class TicTacToe
 
-  def initialize(player1, player2, board, messages, input)
-    @player1 = player1
-    @player2 = player2
+  def initialize(players, board, ui)
+    @players = players
     @board = board
-    @messages = messages
-    @input = input
+    @ui = ui
   end
 
-  attr_accessor :messages
-
-  def play(board, hum, com)
-    until board.game_over
-      messages.entering_number
-      spot = @player1.set_spot(board, hum)
-      messages.space_taken if !board.valid(board.get_value(spot))
-      if board.valid(board.get_value(spot))
-        @player1.move(board,hum,spot)
-        messages.great_move
-        @player2.move(board,com) if !board.game_over
-        board.print_board
-        messages.computer_move
-      end
+  def set_current_player(hum, com, human, computer)
+    if hum == "X"
+      @current_player_marker = hum
+      @other_player_marker = com
+      @current_player = human
+      @other_player = computer
+    else
+      @current_player_marker = com
+      @other_player_marker = hum
+      @current_player = computer
+      @other_player = human
     end
-    messages.game_over
+  end
+
+  def current_player
+    @current_player
+  end
+
+  def play(board)
+    until board.game_over
+      @current_player.move(board,@current_player_marker)
+      board.print_board
+      @current_player_marker, @other_player_marker = @other_player_marker, @current_player_marker
+      @current_player, @other_player = @other_player, @current_player
+    end
+    @ui.game_over
     self.declare_winner if board.win
-    messages.tie if board.tie
+    @ui.tie if board.tie
   end
 
   def print_board
@@ -37,6 +44,7 @@ class TicTacToe
 
   def declare_winner
     winner = @board.last_move
-    messages.declaring_winner(winner)
+    @ui.declaring_winner(winner)
   end
+
 end

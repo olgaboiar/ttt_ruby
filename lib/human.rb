@@ -1,19 +1,23 @@
 class Human 
 
-  attr_accessor :messages, :input, :name
+  attr_accessor :input, :name
   
-  def initialize(input, messages, name)
-    @messages = messages
-    @input = input
+  def initialize(ui, name)
+    @ui = ui
     @name = name
   end
 
+  def name
+    @name
+  end
+
   def set_spot(board,hum)
+    @ui.entering_number
     spot = nil
     until spot
-      spot = input.get_input
-      return spot.to_i - 1 if input.valid(spot)
-      messages.entering_number
+      spot = @ui.get_input
+      return spot.to_i - 1 if @ui.valid(spot)
+      @ui.entering_number
       spot = nil
     end
   end
@@ -21,15 +25,23 @@ class Human
   def set_symbol
     hum = nil
     until hum
-      @messages.choosing_symbol
-      symbol = input.get_input
-      hum = input.check_symbol(symbol)
+      @ui.choosing_symbol
+      symbol = @ui.get_input
+      hum = @ui.check_symbol(symbol)
     end
     return hum
   end
 
-  def move(board, symbol, spot)
-    board.insert_value(spot, symbol)
+  def move(board, symbol)
+    spot = self.set_spot(board,symbol)
+    until board.valid(board.get_value(spot))
+      @ui.space_taken
+      spot = self.set_spot(board,symbol)
+    end
+    if board.valid(board.get_value(spot))
+      board.insert_value(spot, symbol)
+      # @ui.great_move      
+    end
   end
-  
+
 end

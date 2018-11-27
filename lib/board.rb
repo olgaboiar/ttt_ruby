@@ -4,11 +4,10 @@ require_relative "board_size"
 
 class Board
 
-  def initialize(input, messages, markers)
-    @input = input
-    @messages = messages
+  def initialize(ui, markers)
+    @ui = ui
     @markers = markers
-    board_size = BoardSize.new(@input, @messages)
+    board_size = BoardSize.new(@ui)
     @setup = Setup.new(board_size.set_size)
     @board = @setup.create_board_array
   end

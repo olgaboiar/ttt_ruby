@@ -1,5 +1,4 @@
-require_relative "console/user_messages"
-require_relative "console/user_input"
+require_relative "console/user_interaction"
 require_relative "language"
 require_relative "board"
 require_relative "tictactoe"
@@ -9,23 +8,28 @@ require_relative "computer"
 class Game
 
   def start
-    input = UserInput.new
-    language = Language.new(input)
+    ui = UserInteraction.new
+    language = Language.new(ui)
     lang = language.set_lang
-    messages = UserMessages.new(lang)
-    messages.greeting
-    response = input.get_input
-    messages.bye if !input.positive(response)
-    if input.positive(response)
+    ui.set_translation(lang)
+    ui.greeting
+    response = ui.get_input
+    ui.bye if !ui.positive(response)
+    if ui.positive(response)
       markers = Marker.new
-      player1 = Human.new(input, messages, "Vasya")
-      player2 = Computer.new(markers)
-      board = Board.new(input, messages, markers)
-      tictactoe = TicTacToe.new(player1, player2, board, messages, input)
-      @hum = player1.set_symbol
-      @com = player2.set_symbol(@hum)
+      @human = Human.new(ui, "Vasya")
+      @computer = Computer.new(ui, markers, "Computer")
+      board = Board.new(ui, markers)
+      players = [@human, @computer]
+      tictactoe = TicTacToe.new(players, board, ui)
+      @hum = @human.set_symbol
+      @com = @computer.set_symbol(@hum)
+      tictactoe.set_current_player(@hum, @com, @human, @computer)
+      @current_player = tictactoe.current_player
+      ui.board
       board.print_board
-      tictactoe.play(board, @hum, @com)
+      ui.first(@current_player.name)
+      tictactoe.play(board)
     end
   end
 end

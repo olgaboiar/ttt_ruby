@@ -1,9 +1,12 @@
 :greeting: Hi! Do you want to play a game of tic-tac-toe? Enter Y to play or any other key to quit
-:choosing_symbol: Choose the symbol you want to play with - X or O?
+:first: goes first!
+:board: Here is your playing board!
+:choosing_symbol: Choose the symbol you want to play with - X or O? Remember X goes first!
 :entering_number: Enter a number from 1 to 9 to make your move
 :choosing_size: Enter a number from 2 to 9 to cnoose your board size
 :space_taken: That space is taken! Please select another cell
-:computer_move: Computer just made a move. It's your turn now!
+:computer_move: Computer just made a move on cell
+:your_move: It's your turn now!
 :great_move: Great move!
 :tie: It's a tie! Let's play again!
 :declaring_winner: wins!
