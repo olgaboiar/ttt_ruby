@@ -5,11 +5,11 @@ describe Computer do
     @markers = Marker.new
     @ui = UserInteraction.new
     difficulty = 2
-    @computer = Computer.new(@ui, @markers, "Computer", difficulty)
+    @computer = Computer.new(@ui, @markers, 'Computer', difficulty)
   end
 
-  describe "#define_opponent(symbol)" do
-    it "should return O" do
+  describe '#define_opponent(symbol)' do
+    it 'should return O' do
       @computer.define_opponent('X')
       actual = @computer.opponent
       expect(actual).to eq('O')
