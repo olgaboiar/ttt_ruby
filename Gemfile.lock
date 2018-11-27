@@ -94,7 +94,6 @@ DEPENDENCIES
   pronto-rubocop
   rspec
   rspec_junit_formatter
-  rubocop
 
 BUNDLED WITH
    1.16.6

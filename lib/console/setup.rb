@@ -1,12 +1,13 @@
+# This class is responsible to print out the board properly into console
+# Note for future refactoring: get rid of this class, move board printing related methods to ui class, board array method to board class, and win method to tictactoe class
 class Setup
-
   def initialize(argument)
     @argument = argument.to_i
   end
 
   def create_board_array
     @board = []
-    for i in (1..@argument * @argument)
+    (1..@argument * @argument).each do |i|
       @board << i.to_s
     end
     @board
@@ -14,7 +15,7 @@ class Setup
 
   def print_board
     matrix = @board.each_slice(@argument).to_a
-    puts " "
+    puts ' '
     n = @argument - 1
     (0..n).each do |i|
       (0..n).each do |j|
@@ -22,7 +23,7 @@ class Setup
         print " #{matrix[i][j]} |" if matrix[i][j].length > 1
       end
       print "\n"
-      puts "----+" * @argument
+      puts '----+' * @argument
     end
   end
 
@@ -36,7 +37,7 @@ class Setup
 
       diagonals[0] << matrix[i][i]
       diagonals[1] << matrix[i][n - i]
-      for j in (0..n)
+      (0..n).each do |j|
         verticals[j][i] = matrix[i][j]
       end
     end

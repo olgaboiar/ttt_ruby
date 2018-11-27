@@ -1,5 +1,4 @@
 class Human 
-
   attr_accessor :input, :name
   
   def initialize(ui, name)

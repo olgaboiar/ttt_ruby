@@ -1,5 +1,4 @@
 class Computer
-
   attr_accessor :markers
 
   def initialize(ui, markers, name, difficulty)

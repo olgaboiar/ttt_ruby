@@ -1,5 +1,4 @@
 class Language
-
   def initialize(ui)
     @ui = ui
   end

@@ -1,9 +1,8 @@
-require_relative "console/marker"
-require_relative "console/setup"
-require_relative "board_size"
+require_relative 'console/marker'
+require_relative 'console/setup'
+require_relative 'board_size'
 
 class Board
-
   def initialize(ui, markers)
     @ui = ui
     @markers = markers

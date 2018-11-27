@@ -1,12 +1,11 @@
-require_relative "console/user_interaction"
-require_relative "language"
-require_relative "board"
-require_relative "tictactoe"
-require_relative "human"
-require_relative "computer"
+require_relative 'console/user_interaction'
+require_relative 'language'
+require_relative 'board'
+require_relative 'tictactoe'
+require_relative 'human'
+require_relative 'computer'
 
 class Game
-
   def start
     @ui = UserInteraction.new
     language = Language.new(@ui)
@@ -20,7 +19,7 @@ class Game
       set_user_name
       @human = Human.new(@ui, @human_name)
       set_difficulty_level
-      @computer = Computer.new(@ui, markers, "Computer", @difficulty)
+      @computer = Computer.new(@ui, markers, 'Computer', @difficulty)
       board = Board.new(@ui, markers)
       players = [@human, @computer]
       tictactoe = TicTacToe.new(players, board, @ui)

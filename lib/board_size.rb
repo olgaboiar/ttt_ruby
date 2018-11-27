@@ -1,5 +1,5 @@
+# This class handles the size of the board. Move functionality to board class???
 class BoardSize
-  
   def initialize(ui)
     @ui = ui
   end
