@@ -1,7 +1,7 @@
 require 'yaml'
 # This class handles all console user interaction, all inputs and outputs
 class UserInteraction
-  def get_input
+  def read_input
     gets.chomp
   end
 

@@ -8,7 +8,7 @@ class BoardSize
     size = nil
     until size
       @ui.choosing_size
-      argument = @ui.get_input
+      argument = @ui.read_input
       size = @ui.check_size(argument)
     end
     size

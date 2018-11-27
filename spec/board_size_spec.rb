@@ -11,13 +11,13 @@ describe BoardSize do
 
   describe "#set_size" do
     it "should return 3 as a board size" do
-      allow(@input).to receive(:get_input).and_return("3")
+      allow(@input).to receive(:read_input).and_return("3")
       board_size = BoardSize.new(@input)
       actual = board_size.set_size
       expect(actual).to eq("3")
     end
     it "should return 5 as a board size" do
-      allow_any_instance_of(UserInteraction).to receive(:get_input).and_return("5")
+      allow_any_instance_of(UserInteraction).to receive(:read_input).and_return("5")
       board_size = BoardSize.new(@input,)
       actual = board_size.set_size
       expect(actual).to eq("5")

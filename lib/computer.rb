@@ -87,6 +87,5 @@ class Computer
     return @computer if last_move == @opponent
 
     return @opponent
-
   end
 end
