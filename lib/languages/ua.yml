@@ -1,5 +1,7 @@
 :greeting: Привіт! Пограємо в хрестики-нулики? Натисни Y щоб грати або будь-яку іншу клавішу щоб закрити програму
 :first: goes first!
+:user_name: Enter your name
+:difficulty_level: Choose the difficulty level of the game. Enter 1 for Easy and 2 for Hard
 :board: Here is your playing board!
 :choosing_symbol: Обери символ, яким ти хочеш грати - X чи O?
 :entering_number: Введи цифру від 1 до 9 щоб обрати місце для ходу

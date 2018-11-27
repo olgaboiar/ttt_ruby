@@ -11,13 +11,12 @@ class Human
     @name
   end
 
-  def set_spot(board,hum)
-    @ui.entering_number
+  def set_spot(board)
     spot = nil
     until spot
+      @ui.entering_number
       spot = @ui.get_input
       return spot.to_i - 1 if @ui.valid(spot)
-      @ui.entering_number
       spot = nil
     end
   end
@@ -33,7 +32,7 @@ class Human
   end
 
   def move(board, symbol)
-    spot = self.set_spot(board,symbol)
+    spot = self.set_spot(board)
     until board.valid(board.get_value(spot))
       @ui.space_taken
       spot = self.set_spot(board,symbol)

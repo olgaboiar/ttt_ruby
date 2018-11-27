@@ -41,6 +41,14 @@ class UserInteraction
     puts @trans[:greeting]
   end
 
+  def user_name
+    puts @trans[:user_name]
+  end
+
+  def difficulty_level
+    puts @trans[:difficulty_level]
+  end
+
   def first(player)
     puts player + " " + @trans[:first]
   end

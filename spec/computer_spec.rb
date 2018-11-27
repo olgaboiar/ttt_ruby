@@ -4,7 +4,8 @@ describe Computer do
   before do
     @markers = Marker.new
     @ui = UserInteraction.new
-    @computer = Computer.new(@ui, @markers, "Computer")
+    difficulty = 2
+    @computer = Computer.new(@ui, @markers, "Computer", difficulty)
   end
 
   describe "#set_opponent(symbol)" do
