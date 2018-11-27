@@ -1,13 +1,10 @@
-class Human 
+# This class defines Human player behavior
+class Human
   attr_accessor :input, :name
-  
+
   def initialize(ui, name)
     @ui = ui
     @name = name
-  end
-
-  def name
-    @name
   end
 
   def set_spot(board)
@@ -31,14 +28,14 @@ class Human
   end
 
   def move(board, symbol)
-    spot = self.set_spot(board)
+    spot = set_spot(board)
     until board.valid(board.get_value(spot))
       @ui.space_taken
-      spot = self.set_spot(board,symbol)
+      spot = set_spot(board, symbol)
     end
     if board.valid(board.get_value(spot))
       board.insert_value(spot, symbol)
-      # @ui.great_move      
+      # @ui.great_move
     end
   end
 end

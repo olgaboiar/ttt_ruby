@@ -11,6 +11,6 @@ class BoardSize
       argument = @ui.get_input
       size = @ui.check_size(argument)
     end
-    return size
+    size
   end
 end

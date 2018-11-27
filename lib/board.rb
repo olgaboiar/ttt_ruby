@@ -1,7 +1,7 @@
 require_relative 'console/marker'
 require_relative 'console/setup'
 require_relative 'board_size'
-
+# This class hadles the playing board. !move win into tictactoe
 class Board
   def initialize(ui, markers)
     @ui = ui

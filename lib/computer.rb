@@ -1,3 +1,4 @@
+# This class definies computer behavior
 class Computer
   attr_accessor :markers
 
@@ -42,11 +43,12 @@ class Computer
   end
  
   def set_best_move(board, last_move, depth = 0)
-    scores =[]
-    moves =[]
+    scores = []
+    moves = []
     current_move = nil
     depth += 1
-    return get_move_score(board, last_move, depth) if board.game_over      
+    return get_move_score(board, last_move, depth) if board.game_over
+
     board.available_spots.each do |as|
       potential_board = board.dup
       current_move = next_player(last_move)
@@ -55,7 +57,7 @@ class Computer
       moves.push as.to_i
       potential_board.insert_value(as.to_i - 1, as)
     end
-    
+
     if current_move == @computer
       max_score_index = scores.each_with_index.max[1]
       @best_move = moves[max_score_index]
@@ -80,9 +82,11 @@ class Computer
       0
     end
   end
-    
+
   def next_player(last_move)
     return @computer if last_move == @opponent
+
     return @opponent
+
   end
 end

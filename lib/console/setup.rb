@@ -5,6 +5,7 @@
 class Setup
   def initialize(argument)
     @argument = argument.to_i
+    @index = @argument - 1
   end
 
   def create_board_array
@@ -18,9 +19,8 @@ class Setup
   def print_board
     matrix = @board.each_slice(@argument).to_a
     puts ' '
-    n = @argument - 1
-    (0..n).each do |i|
-      (0..n).each do |j|
+    (0..@index).each do |i|
+      (0..@index).each do |j|
         print "  #{matrix[i][j]} |" if matrix[i][j].length == 1
         print " #{matrix[i][j]} |" if matrix[i][j].length > 1
       end
@@ -31,24 +31,23 @@ class Setup
 
   def win
     matrix = @board.each_slice(@argument).to_a
-    n = @argument - 1
     verticals = Array.new(@argument) { Array.new(@argument) }
-    diagonals = Array.new(2) { Array.new }
-    (0..n).each do |i|
+    diagonals = Array.new(2) { [] }
+    (0..@index).each do |i|
       return true if matrix[i].uniq.length == 1
 
       diagonals[0] << matrix[i][i]
-      diagonals[1] << matrix[i][n - i]
-      (0..n).each do |j|
+      diagonals[1] << matrix[i][@index - i]
+      (0..@index).each do |j|
         verticals[j][i] = matrix[i][j]
       end
     end
-    (0..n).each do |i|
+    (0..@index).each do |i|
       return true if verticals[i].uniq.length == 1
     end
     (0..1).each do |i|
       return true if diagonals[i].uniq.length == 1
     end
-    return false
+    false
   end
 end

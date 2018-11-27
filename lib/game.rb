@@ -37,12 +37,12 @@ class Game
   def set_user_name
     @ui.user_name
     @human_name = @ui.get_input
-    return @human_name
+    @human_name
   end
 
   def set_difficulty_level
     @ui.difficulty_level
     @difficulty = @ui.get_input.to_i
-    return @difficulty
+    @difficulty
   end
 end

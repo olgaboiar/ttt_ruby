@@ -11,27 +11,25 @@ class TicTacToe
 
   def set_current_player(hum, com, human, computer)
     if hum == 'X'
-      @current_player_marker = hum
-      @other_player_marker = com
-      @current_player = human
-      @other_player = computer
+      @current_marker = hum
+      @other_marker = com
+      @current_player, @other_player = human, computer
     else
-      @current_player_marker = com
-      @other_player_marker = hum
-      @current_player = computer
-      @other_player = human
+      @current_marker = com
+      @other_marker = hum
+      @current_player, @other_player = computer, human
     end
   end
 
   def play(board)
     until board.game_over
-      @current_player.move(board, @current_player_marker)
+      @current_player.move(board, @current_marker)
       board.print_board
-      @current_player_marker, @other_player_marker = @other_player_marker, @current_player_marker
+      @current_marker, @other_marker = @other_marker, @current_marker
       @current_player, @other_player = @other_player, @current_player
     end
     @ui.game_over
-    self.declare_winner if board.win
+    declare_winner if board.win
     @ui.tie if board.tie
   end
 
