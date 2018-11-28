@@ -3,7 +3,6 @@ require_relative '../lib/human'
 describe Human do
   before do
     @input = UserInteraction.new
-    language = Language.new(@input)
     allow_any_instance_of(Language).to receive(:set_lang).and_return('1')
     @player = Human.new(@input, 'Valerie')
     allow_any_instance_of(UserInteraction).to receive(:puts).and_return(nil)

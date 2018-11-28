@@ -1,12 +1,10 @@
 require_relative '../lib/board'
 
 describe Board do
-
   before do
     allow_any_instance_of(BoardSize).to receive(:set_size).and_return('3')
     @markers = Marker.new
     @input = UserInteraction.new
-    language = Language.new(@input)
     allow_any_instance_of(Language).to receive(:set_lang).and_return('1')
     @board = Board.new(@input, @markers)
     @board_size = BoardSize.new(@input)
@@ -35,7 +33,7 @@ describe Board do
       actual = @board.win
       expect(actual).to be_falsey
     end
-    it 'should return false when no winning position is reached'  do
+    it 'should return false when no winning position is reached' do
       @board.insert_value(1, 'X')
       @board.insert_value(2, 'O')
       actual = @board.win
@@ -107,7 +105,7 @@ describe Board do
       @board.insert_value(6, 'O')
       @board.insert_value(8, 'X')
       actual = @board.game_over
-      expect(@board.game_over).to be(true)
+      expect(actual).to be(true)
     end
     it 'should return true when win is reached' do
       @board.insert_value(1, 'X')
@@ -188,9 +186,8 @@ describe Board do
       @board.insert_value(0, 'O')
       @board.insert_value(4, 'X')
       @board.insert_value(6, 'O')
-      @board.insert_value(7, 'X')
       actual = @board.available_spots
-      expect(actual).to eq(['3', '4', '6', '9'])
+      expect(actual).to eq(%w[3 4 6 8 9])
     end
     it 'should return empty array' do
       @board.insert_value(2, 'X')
@@ -207,7 +204,7 @@ describe Board do
     end
     it 'should return an array of 1-9' do
       actual = @board.available_spots
-      expect(actual).to eq(['1', '2', '3', '4', '5', '6', '7', '8', '9'])
+      expect(actual).to eq(%w[1 2 3 4 5 6 7 8 9])
     end
   end
 end

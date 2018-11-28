@@ -18,12 +18,12 @@ describe Computer do
 
   describe '#next_player(last_move)' do
     it 'should return O' do
-      marker = @computer.define_opponent('X')       
+      marker = @computer.define_opponent('X')
       actual = @computer.next_player(marker)
       expect(actual).to eq('O')
     end
     it 'should return O' do
-      marker = @computer.define_opponent('O')       
+      marker = @computer.define_opponent('O')
       actual = @computer.next_player(marker)
       expect(actual).to eq('X')
     end

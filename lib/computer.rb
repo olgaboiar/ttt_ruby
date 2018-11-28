@@ -33,22 +33,23 @@ class Computer
     @ui.computer_move(@best_move)
   end
 
-  def set_best_move(board, last_move, depth = 0)
-    scores = []
-    moves = []
+  def set_best_move(board, last_move, depth = 0, scores = [], moves = [])
     current_move = nil
-    depth += 1
     return get_move_score(board, last_move, depth) if board.game_over
 
     board.available_spots.each do |as|
       potential_board = board.dup
       current_move = next_player(last_move)
       potential_board.insert_value(as.to_i - 1, current_move)
-      scores.push set_best_move(potential_board, current_move, depth)
-      moves.push as.to_i
-      potential_board.insert_value(as.to_i - 1, as)
+      scores.push set_best_move(potential_board, current_move, depth + 1)
+      potential_move(moves, potential_board, as)
     end
     return_score(current_move, scores, moves)
+  end
+
+  def potential_move(moves, potential_board, spot)
+    moves.push spot.to_i
+    potential_board.insert_value(spot.to_i - 1, spot)
   end
 
   def return_score(current_move, scores, moves)

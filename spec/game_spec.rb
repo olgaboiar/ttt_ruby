@@ -1,7 +1,6 @@
 require_relative '../lib/game'
 
 describe Game do
-    
   before do
     @input = UserInteraction.new
     language = Language.new(@input)

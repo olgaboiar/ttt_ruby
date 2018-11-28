@@ -1,7 +1,6 @@
 require_relative '../lib/console/marker'
 
 describe Marker do
-    
   before do
     @markers = Marker.new
   end

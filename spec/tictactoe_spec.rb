@@ -1,7 +1,6 @@
 require_relative '../lib/tictactoe'
 
 describe TicTacToe do
-    
   before do
     human = Human.new(@input, 'Vasya')
     computer = Human.new(@input, 'Ivan')
