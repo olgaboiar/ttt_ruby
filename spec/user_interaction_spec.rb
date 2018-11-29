@@ -1,3 +1,4 @@
+require 'spec_helper'
 require_relative '../lib/console/user_interaction'
 
 describe UserInteraction do
