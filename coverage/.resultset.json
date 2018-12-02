@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/board_size.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/board_size.rb": [
         null,
         1,
         1,
@@ -19,7 +19,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/board_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/board_spec.rb": [
         1,
         1,
         null,
@@ -232,7 +232,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/board.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/board.rb": [
         1,
         1,
         1,
@@ -286,7 +286,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/console/marker.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/console/marker.rb": [
         null,
         1,
         1,
@@ -303,7 +303,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/console/setup.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/console/setup.rb": [
         null,
         null,
         null,
@@ -392,7 +392,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/computer_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/computer_spec.rb": [
         1,
         1,
         null,
@@ -426,7 +426,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/computer.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/computer.rb": [
         null,
         1,
         1,
@@ -514,7 +514,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/game_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/game_spec.rb": [
         1,
         1,
         null,
@@ -533,7 +533,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/game.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/game.rb": [
         1,
         1,
         1,
@@ -598,7 +598,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/console/user_interaction.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/console/user_interaction.rb": [
         1,
         null,
         1,
@@ -696,7 +696,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/language.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/language.rb": [
         null,
         1,
         1,
@@ -716,7 +716,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/tictactoe.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/tictactoe.rb": [
         1,
         null,
         1,
@@ -771,7 +771,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/lib/human.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/lib/human.rb": [
         null,
         1,
         1,
@@ -813,7 +813,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/human_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/human_spec.rb": [
         1,
         1,
         null,
@@ -848,7 +848,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/language_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/language_spec.rb": [
         1,
         1,
         null,
@@ -873,7 +873,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/marker_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/marker_spec.rb": [
         1,
         1,
         null,
@@ -897,7 +897,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/setup_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/setup_spec.rb": [
         1,
         1,
         null,
@@ -984,7 +984,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/tictactoe_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/tictactoe_spec.rb": [
         1,
         1,
         null,
@@ -1011,7 +1011,7 @@
         null,
         null
       ],
-      "/Users/olgaboiaryntseva/projects/ttt_ruby/spec/user_interaction_spec.rb": [
+      "/Users/olgaboiaryntseva/Projects/ttt_ruby/spec/user_interaction_spec.rb": [
         1,
         1,
         null,
@@ -1148,6 +1148,6 @@
         null
       ]
     },
-    "timestamp": 1543607030
+    "timestamp": 1543794329
   }
 }
