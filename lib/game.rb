@@ -72,15 +72,27 @@ class Game
   end
 
   def set_user_name
+    human_name = nil
     @ui.user_name
-    human_name = @ui.read_input
-    human_name
+    until human_name
+      human_name = @ui.read_input
+      return human_name if @ui.valid_name(human_name)
+
+      @ui.user_name
+      human_name = nil
+    end
   end
 
   def set_other_user_name
+    other_name = nil
     @ui.set_other_user_name
-    other_name = @ui.read_input
-    other_name
+    until other_name
+      other_name = @ui.read_input
+      return other_name if @ui.valid_name(other_name)
+
+      @ui.set_other_user_name
+      other_name = nil
+    end
   end
 
   def set_difficulty_level

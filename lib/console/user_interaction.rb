@@ -17,6 +17,10 @@ class UserInteraction
     return true if difficulty.to_i < 3 && difficulty.to_i > 0
   end
 
+  def valid_name(name)
+    return true if name =~ /(^[\p{L}\s'.-]+$)/
+  end
+
   def valid(spot)
     return true if spot.to_i < 17 && spot.to_i > 0
   end
