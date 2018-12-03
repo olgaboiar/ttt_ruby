@@ -84,9 +84,15 @@ class Game
   end
 
   def set_difficulty_level
+    @difficulty = nil
     @ui.difficulty_level
-    @difficulty = @ui.read_input.to_i
-    @difficulty
+    until @difficulty
+      @difficulty = @ui.read_input.to_i
+      return @difficulty if @ui.valid_difficulty(@difficulty)
+
+      @ui.difficulty_level
+      @difficulty = nil
+    end
   end
 
   def quit

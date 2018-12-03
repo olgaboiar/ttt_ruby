@@ -13,6 +13,10 @@ class UserInteraction
     return true if lang.to_i < 3 && lang.to_i > 0
   end
 
+  def valid_difficulty(difficulty)
+    return true if difficulty.to_i < 3 && difficulty.to_i > 0
+  end
+
   def valid(spot)
     return true if spot.to_i < 17 && spot.to_i > 0
   end
