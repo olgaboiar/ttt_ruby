@@ -19,7 +19,7 @@ class Human
     end
   end
 
-  def set_symbol(name)
+  def choose_symbol(name)
     hum = nil
     until hum
       @ui.choosing_symbol(name)

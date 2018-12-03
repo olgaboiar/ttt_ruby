@@ -30,10 +30,10 @@ class Game
   def human_vs_computer
     name = set_user_name
     @player1 = Human.new(@ui, @markers, name)
-    set_difficulty_level(name)
+    define_difficulty_level(name)
     @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
     @players = [@player1, @player2]
-    @hum = @player1.set_symbol(name)
+    @hum = @player1.choose_symbol(name)
     @com = @player2.define_symbol(@hum)
   end
 
@@ -43,12 +43,12 @@ class Game
     name2 = set_other_user_name
     @player2 = Human.new(@ui, @markers, name2)
     @players = [@player1, @player2]
-    @hum = @player1.set_symbol(name)
+    @hum = @player1.choose_symbol(name)
     @com = @player2.define_symbol(@hum)
   end
 
   def compter_vs_computer
-    set_difficulty_level
+    define_difficulty_level
     @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
     @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
     @players = [@player1, @player2]
@@ -105,7 +105,7 @@ class Game
     end
   end
 
-  def set_difficulty_level(name)
+  def define_difficulty_level(name)
     @difficulty = nil
     @ui.difficulty_level(name)
     until @difficulty
