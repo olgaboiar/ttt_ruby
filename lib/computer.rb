@@ -29,6 +29,7 @@ class Computer
     define_opponent(symbol)
     set_best_move(board, @opponent) if @difficulty == 2
     @best_move = get_random_move(board) if @difficulty == 1
+    sleep(2)
     board.insert_value(@best_move.to_i - 1, symbol)
     @ui.computer_move(@best_move)
   end
