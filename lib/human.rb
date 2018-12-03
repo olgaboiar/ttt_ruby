@@ -19,10 +19,10 @@ class Human
     end
   end
 
-  def set_symbol
+  def set_symbol(name)
     hum = nil
     until hum
-      @ui.choosing_symbol
+      @ui.choosing_symbol(name)
       symbol = @ui.read_input
       hum = @ui.check_symbol(symbol)
     end

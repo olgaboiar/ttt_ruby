@@ -74,8 +74,8 @@ class UserInteraction
     puts @trans[:other_user_name]
   end
 
-  def difficulty_level
-    puts @trans[:difficulty_level]
+  def difficulty_level(name)
+    puts name + ', ' + @trans[:difficulty_level]
   end
 
   def first(player)
@@ -86,8 +86,8 @@ class UserInteraction
     puts @trans[:board]
   end
 
-  def choosing_symbol
-    puts @trans[:choosing_symbol]
+  def choosing_symbol(name)
+    puts name + ', ' + @trans[:choosing_symbol]
   end
 
   def entering_number
