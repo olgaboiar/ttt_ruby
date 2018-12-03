@@ -33,7 +33,8 @@ class Computer
     @ui.computer_move(@best_move)
   end
 
-  def set_best_move(board, last_move, depth = 0, scores = [], moves = [])
+  def set_best_move(board, last_move, depth = 0, scores = [])
+    moves = []
     current_move = nil
     return get_move_score(board, last_move, depth) if board.game_over
 
