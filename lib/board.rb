@@ -21,14 +21,6 @@ class Board
     @setup.win
   end
 
-  def tie
-    return true if available_spots.length.zero?
-  end
-
-  def game_over
-    win || tie
-  end
-
   def get_value(spot)
     @board[spot]
   end

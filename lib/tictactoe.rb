@@ -31,15 +31,27 @@ class TicTacToe
   end
 
   def play(board)
-    until board.game_over
+    until game_over(board)
       @current_player.move(board, @current_marker)
       board.print_board
       @current_marker, @other_marker = @other_marker, @current_marker
       @current_player, @other_player = @other_player, @current_player
     end
     @ui.game_over
-    declare_winner if board.win
-    @ui.tie if board.tie
+    declare_winner if win(board)
+    @ui.tie if tie(board)
+  end
+
+  def game_over(board)
+    win(board) || tie(board)
+  end
+
+  def win(board)
+    board.win
+  end
+
+  def tie(board)
+    return true if board.available_spots.length.zero?
   end
 
   def print_board

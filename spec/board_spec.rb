@@ -69,67 +69,6 @@ describe Board do
     end
   end
 
-  describe '#tie' do
-    it 'should return true wneh all cells are X or O' do
-      @board.insert_value(2, 'X')
-      @board.insert_value(0, 'O')
-      @board.insert_value(4, 'X')
-      @board.insert_value(7, 'O')
-      @board.insert_value(1, 'X')
-      @board.insert_value(3, 'O')
-      @board.insert_value(5, 'X')
-      @board.insert_value(6, 'O')
-      @board.insert_value(8, 'X')
-      actual = @board.tie
-      expect(actual).to be(true)
-    end
-    it 'should return false wneh not all cells are X or O' do
-      @board.insert_value(2, 'X')
-      @board.insert_value(0, 'O')
-      @board.insert_value(4, 'X')
-      @board.insert_value(7, 'O')
-      @board.insert_value(6, 'X')
-      actual = @board.tie
-      expect(actual).to be_falsey
-    end
-  end
-
-  describe '#game_over' do
-    it 'should return true when tie is reached' do
-      @board.insert_value(2, 'X')
-      @board.insert_value(0, 'O')
-      @board.insert_value(4, 'X')
-      @board.insert_value(7, 'O')
-      @board.insert_value(1, 'X')
-      @board.insert_value(3, 'O')
-      @board.insert_value(5, 'X')
-      @board.insert_value(6, 'O')
-      @board.insert_value(8, 'X')
-      actual = @board.game_over
-      expect(actual).to be(true)
-    end
-    it 'should return true when win is reached' do
-      @board.insert_value(1, 'X')
-      @board.insert_value(0, 'O')
-      @board.insert_value(4, 'X')
-      @board.insert_value(6, 'O')
-      @board.insert_value(7, 'X')
-      actual = @board.game_over
-      expect(actual).to be(true)
-    end
-    it 'should return false when neither win nor tie is reached' do
-      actual = @board.game_over
-      expect(actual).to be_falsey
-    end
-    it 'should return false when neither win nor tie is reached' do
-      @board.insert_value(2, 'X')
-      @board.insert_value(0, 'O')
-      @board.insert_value(4, 'X')
-      actual = @board.game_over
-      expect(actual).to be_falsey
-    end
-  end
-
   describe '#get_value' do
     it 'should return X as the value of the first cell on the given board' do
       @board.insert_value(0, 'X')
