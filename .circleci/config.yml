@@ -70,7 +70,7 @@ jobs:
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
 
-      # collect reports
+      # collect reports and send to code climate
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
