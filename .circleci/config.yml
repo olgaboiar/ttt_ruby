@@ -9,7 +9,8 @@ jobs:
     #   only:
     #     - code-submission
     #     - master
-
+    environment:
+      CC_TEST_REPORTER_ID: f147d59414997f259b308178e2e9a49f8a4d470b859dff5906cc8c19102dccb0
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
@@ -35,7 +36,11 @@ jobs:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - save_cache:
           paths:
             - ./vendor/bundle
