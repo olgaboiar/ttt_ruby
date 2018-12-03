@@ -1,6 +1,7 @@
 :greeting: Hi! Do you want to play a game of tic-tac-toe? Enter Y to play or any other key to quit
 :first: goes first!
 :user_name: Enter your name
+:other_user_name: Enter the name of the other player
 :difficulty_level: Choose the difficulty level of the game. Enter 1 for Easy and 2 for Hard
 :board: Here is your playing board!
 :choosing_symbol: Choose the symbol you want to play with - X or O? Remember X goes first!

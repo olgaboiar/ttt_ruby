@@ -1,9 +1,10 @@
 # This class defines Human player behavior
 class Human
-  attr_accessor :input, :name
+  attr_accessor :input, :markers, :name
 
-  def initialize(userinteraction, name)
+  def initialize(userinteraction, markers, name)
     @ui = userinteraction
+    @markers = markers
     @name = name
   end
 
@@ -26,6 +27,12 @@ class Human
       hum = @ui.check_symbol(symbol)
     end
     hum
+  end
+
+  def define_symbol(hum)
+    return @markers.o if hum == @markers.x
+
+    @markers.x
   end
 
   def move(board, symbol)

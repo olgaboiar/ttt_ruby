@@ -42,6 +42,10 @@ class UserInteraction
     puts @trans[:user_name]
   end
 
+  def set_other_user_name
+    puts @trans[:other_user_name]
+  end
+
   def difficulty_level
     puts @trans[:difficulty_level]
   end

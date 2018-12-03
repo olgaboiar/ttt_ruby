@@ -11,7 +11,7 @@ class Game
     create_players
     board = Board.new(@ui, @markers)
     tictactoe = TicTacToe.new(@players, board, @ui)
-    tictactoe.set_current_player(@hum, @com, @human, @computer)
+    tictactoe.set_current_player(@hum, @com, @player1, @player2)
     @current_player = tictactoe.current_player
     @ui.board
     board.print_board
@@ -21,13 +21,34 @@ class Game
 
   def create_players
     @markers = Marker.new
-    set_user_name
-    @human = Human.new(@ui, @human_name)
-    set_difficulty_level
-    @computer = Computer.new(@ui, @markers, 'Computer', @difficulty)
-    @players = [@human, @computer]
-    @hum = @human.set_symbol
-    @com = @computer.define_symbol(@hum)
+    name = set_user_name
+    puts "Choose the game mode. Enter 1 for Human vs Computer, 2 for Human vs Human, or 3 for Computer vs Computer"
+    mode = @ui.read_input
+    if mode == "1"
+      @player1 = Human.new(@ui, @markers, name)
+      set_difficulty_level
+      @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
+      @players = [@player1, @player2]
+      @hum = @player1.set_symbol
+      @com = @player2.define_symbol(@hum)
+    end
+    if mode == "2"
+      @player1 = Human.new(@ui, @markers, name)
+      name2 = set_other_user_name
+      @player2 = Human.new(@ui, @markers, name2)
+      @players = [@player1, @player2]
+      @hum = @player1.set_symbol
+      @com = @player2.define_symbol(@hum)
+    end
+    if mode == "3"
+      set_difficulty_level
+      @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
+      @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
+      @players = [@player1, @player2]
+      @hum = "X"
+      @com = @player2.define_symbol(@hum)
+    end
+    
   end
 
   def ask_to_play
@@ -46,8 +67,14 @@ class Game
 
   def set_user_name
     @ui.user_name
-    @human_name = @ui.read_input
-    @human_name
+    human_name = @ui.read_input
+    human_name
+  end
+
+  def set_other_user_name
+    @ui.set_other_user_name
+    other_name = @ui.read_input
+    other_name
   end
 
   def set_difficulty_level
