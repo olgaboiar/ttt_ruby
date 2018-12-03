@@ -3,11 +3,11 @@ require_relative '../lib/tictactoe'
 
 describe TicTacToe do
   before do
-    human = Human.new(@input, 'Vasya')
-    computer = Human.new(@input, 'Ivan')
+    markers = Marker.new
+    human = Human.new(@input, markers, 'Vasya')
+    computer = Human.new(@input, markers, 'Ivan')
     allow_any_instance_of(BoardSize).to receive(:set_size).and_return('3')
     @input = UserInteraction.new
-    markers = Marker.new
     @board = Board.new(@input, markers)
     board_size = BoardSize.new(@input)
     @setup = Setup.new(board_size.set_size)

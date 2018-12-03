@@ -1,5 +1,6 @@
 :greeting: Привіт! Пограємо в хрестики-нулики? Натисни Y щоб грати або будь-яку іншу клавішу щоб закрити програму
 :first: goes first!
+:game_mode: Choose the game mode. Enter 1 for Human vs Computer, 2 for Human vs Human, or 3 for Computer vs Computer
 :user_name: Enter your name
 :other_user_name: Enter the name of the other player
 :difficulty_level: Choose the difficulty level of the game. Enter 1 for Easy and 2 for Hard

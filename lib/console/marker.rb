@@ -1,15 +1,8 @@
 # This class handles markers X and O
 class Marker
+  attr_accessor :x, :o
   def initialize
-    @x_marker = 'X'
-    @o_marker = 'O'
-  end
-
-  def x
-    @x_marker
-  end
-
-  def o
-    @o_marker
+    @x = 'X'
+    @o = 'O'
   end
 end

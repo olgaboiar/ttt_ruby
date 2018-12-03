@@ -21,34 +21,40 @@ class Game
 
   def create_players
     @markers = Marker.new
-    name = set_user_name
-    puts "Choose the game mode. Enter 1 for Human vs Computer, 2 for Human vs Human, or 3 for Computer vs Computer"
+    @ui.game_mode
     mode = @ui.read_input
-    if mode == "1"
-      @player1 = Human.new(@ui, @markers, name)
-      set_difficulty_level
-      @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
-      @players = [@player1, @player2]
-      @hum = @player1.set_symbol
-      @com = @player2.define_symbol(@hum)
-    end
-    if mode == "2"
-      @player1 = Human.new(@ui, @markers, name)
-      name2 = set_other_user_name
-      @player2 = Human.new(@ui, @markers, name2)
-      @players = [@player1, @player2]
-      @hum = @player1.set_symbol
-      @com = @player2.define_symbol(@hum)
-    end
-    if mode == "3"
-      set_difficulty_level
-      @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
-      @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
-      @players = [@player1, @player2]
-      @hum = "X"
-      @com = @player2.define_symbol(@hum)
-    end
-    
+    human_vs_computer if @ui.computer_human(mode)
+    human_vs_human if @ui.human(mode)
+    compter_vs_computer if @ui.computer(mode)
+  end
+
+  def human_vs_computer
+    name = set_user_name
+    @player1 = Human.new(@ui, @markers, name)
+    set_difficulty_level
+    @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
+    @players = [@player1, @player2]
+    @hum = @player1.set_symbol
+    @com = @player2.define_symbol(@hum)
+  end
+
+  def human_vs_human
+    name = set_user_name
+    @player1 = Human.new(@ui, @markers, name)
+    name2 = set_other_user_name
+    @player2 = Human.new(@ui, @markers, name2)
+    @players = [@player1, @player2]
+    @hum = @player1.set_symbol
+    @com = @player2.define_symbol(@hum)
+  end
+
+  def compter_vs_computer
+    set_difficulty_level
+    @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
+    @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
+    @players = [@player1, @player2]
+    @hum = @markers.x
+    @com = @player2.define_symbol(@hum)
   end
 
   def ask_to_play

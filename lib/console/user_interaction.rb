@@ -21,6 +21,18 @@ class UserInteraction
     return true if response =~ /^[y|Y]$/
   end
 
+  def computer_human(mode)
+    return true if mode == '1'
+  end
+
+  def human(mode)
+    return true if mode == '2'
+  end
+
+  def computer(mode)
+    return true if mode == '3'
+  end
+
   def check_symbol(symbol)
     return symbol.upcase if symbol =~ /^[x|X|o|O]$/
   end
@@ -36,6 +48,10 @@ class UserInteraction
 
   def greeting
     puts @trans[:greeting]
+  end
+
+  def game_mode
+    puts @trans[:game_mode]
   end
 
   def user_name
