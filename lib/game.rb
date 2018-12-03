@@ -21,8 +21,7 @@ class Game
 
   def create_players
     @markers = Marker.new
-    @ui.game_mode
-    mode = @ui.read_input
+    mode = set_mode
     human_vs_computer if @ui.computer_human(mode)
     human_vs_human if @ui.human(mode)
     compter_vs_computer if @ui.computer(mode)
@@ -80,6 +79,17 @@ class Game
 
       @ui.user_name
       human_name = nil
+    end
+  end
+
+  def set_mode
+    mode = nil
+    until mode
+      @ui.game_mode
+      mode = @ui.read_input
+      return mode if @ui.valid_mode(mode)
+
+      mode = nil
     end
   end
 

@@ -17,6 +17,10 @@ class UserInteraction
     return true if difficulty.to_i < 3 && difficulty.to_i > 0
   end
 
+  def valid_mode(mode)
+    return true if mode.to_i < 4 && mode.to_i > 0
+  end
+
   def valid_name(name)
     return true if name =~ /(^[\p{L}\s'.-]+$)/
   end
