@@ -17,6 +17,14 @@ class Board
     @setup.print_board
   end
 
+  def game_over
+    win || tie
+  end
+
+  def tie
+    return true if available_spots.length.zero?
+  end
+
   def win
     @setup.win
   end

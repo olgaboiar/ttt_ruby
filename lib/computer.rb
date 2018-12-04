@@ -1,5 +1,6 @@
-# This class definies computer behavior
-class Computer
+require_relative 'player'
+# This class definies computer behavior and Inherits from player class
+class Computer < Player
   attr_accessor :markers, :opponent, :name
 
   def initialize(userinteraction, markers, name, difficulty)
@@ -19,11 +20,11 @@ class Computer
     end
   end
 
-  def define_symbol(hum)
-    return @markers.o if hum == @markers.x
+  # def define_symbol(hum)
+  #   return @markers.o if hum == @markers.x
 
-    @markers.x
-  end
+  #   @markers.x
+  # end
 
   def move(board, symbol)
     define_opponent(symbol)
