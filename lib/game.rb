@@ -22,38 +22,30 @@ class Game
   def create_players
     @markers = Marker.new
     mode = set_mode
+    @name = set_user_name
+    define_difficulty_level(@name) if @ui.computer(mode) or @ui.computer_human(mode)
     human_vs_computer if @ui.computer_human(mode)
     human_vs_human if @ui.human(mode)
     compter_vs_computer if @ui.computer(mode)
+    @players = [@player1, @player2]
+    @hum = @player1.choose_symbol(@name)
+    @com = @player2.define_symbol(@hum)
   end
 
   def human_vs_computer
-    name = set_user_name
-    @player1 = Human.new(@ui, @markers, name)
-    define_difficulty_level(name)
+    @player1 = Human.new(@ui, @markers, @name)
     @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
-    @players = [@player1, @player2]
-    @hum = @player1.choose_symbol(name)
-    @com = @player2.define_symbol(@hum)
   end
 
   def human_vs_human
-    name = set_user_name
-    @player1 = Human.new(@ui, @markers, name)
+    @player1 = Human.new(@ui, @markers, @name)
     name2 = set_other_user_name
     @player2 = Human.new(@ui, @markers, name2)
-    @players = [@player1, @player2]
-    @hum = @player1.choose_symbol(name)
-    @com = @player2.define_symbol(@hum)
   end
 
   def compter_vs_computer
-    define_difficulty_level
     @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
     @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
-    @players = [@player1, @player2]
-    @hum = @markers.x
-    @com = @player2.define_symbol(@hum)
   end
 
   def ask_to_play

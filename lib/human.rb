@@ -3,11 +3,12 @@ require_relative 'player'
 class Human < Player
   attr_accessor :input, :markers, :name
 
-  # def initialize(userinteraction, markers, name)
-  #   @ui = userinteraction
-  #   @markers = markers
-  #   @name = name
-  # end
+  def initialize(userinteraction, markers, name)
+    super(userinteraction, markers, name)
+    # @ui = userinteraction
+    # @markers = markers
+    # @name = name
+  end
 
   def set_spot
     spot = nil

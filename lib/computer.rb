@@ -4,9 +4,10 @@ class Computer < Player
   attr_accessor :markers, :opponent, :name
 
   def initialize(userinteraction, markers, name, difficulty)
-    @markers = markers
-    @name = name
-    @ui = userinteraction
+    super(userinteraction, markers, name)
+    # @markers = markers
+    # @name = name
+    # @ui = userinteraction
     @difficulty = difficulty
   end
 
@@ -18,6 +19,10 @@ class Computer < Player
       @opponent = @markers.x
       @computer = @markers.o
     end
+  end
+
+  def choose_symbol(name)
+    @markers.x
   end
 
   # def define_symbol(hum)
