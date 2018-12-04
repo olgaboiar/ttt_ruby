@@ -26,7 +26,7 @@ class Game
     define_difficulty_level(@name) if @ui.computer(mode) or @ui.computer_human(mode)
     human_vs_computer if @ui.computer_human(mode)
     human_vs_human if @ui.human(mode)
-    compter_vs_computer if @ui.computer(mode)
+    computer_vs_computer if @ui.computer(mode)
     @players = [@player1, @player2]
     @hum = @player1.choose_symbol
     @com = @player2.define_symbol(@hum)
@@ -39,11 +39,11 @@ class Game
 
   def human_vs_human
     @player1 = Human.new(@ui, @markers, @name)
-    name2 = set_other_user_name
+    name2 = set_user_name
     @player2 = Human.new(@ui, @markers, name2)
   end
 
-  def compter_vs_computer
+  def computer_vs_computer
     @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
     @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
   end
@@ -82,18 +82,6 @@ class Game
       return mode if @ui.valid_mode(mode)
 
       mode = nil
-    end
-  end
-
-  def set_other_user_name
-    other_name = nil
-    @ui.set_other_user_name
-    until other_name
-      other_name = @ui.read_input
-      return other_name if @ui.valid_name(other_name)
-
-      @ui.set_other_user_name
-      other_name = nil
     end
   end
 
