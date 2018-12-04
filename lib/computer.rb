@@ -21,7 +21,7 @@ class Computer < Player
     end
   end
 
-  def choose_symbol(name)
+  def choose_symbol
     @markers.x
   end
 

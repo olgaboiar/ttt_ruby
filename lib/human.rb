@@ -21,10 +21,10 @@ class Human < Player
     end
   end
 
-  def choose_symbol(name)
+  def choose_symbol
     hum = nil
     until hum
-      @ui.choosing_symbol(name)
+      @ui.choosing_symbol
       symbol = @ui.read_input
       hum = @ui.check_symbol(symbol)
     end

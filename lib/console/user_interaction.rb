@@ -86,8 +86,8 @@ class UserInteraction
     puts @trans[:board]
   end
 
-  def choosing_symbol(name)
-    puts name + ', ' + @trans[:choosing_symbol]
+  def choosing_symbol
+    puts @trans[:choosing_symbol]
   end
 
   def entering_number

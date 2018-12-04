@@ -28,7 +28,7 @@ class Game
     human_vs_human if @ui.human(mode)
     compter_vs_computer if @ui.computer(mode)
     @players = [@player1, @player2]
-    @hum = @player1.choose_symbol(@name)
+    @hum = @player1.choose_symbol
     @com = @player2.define_symbol(@hum)
   end
 
