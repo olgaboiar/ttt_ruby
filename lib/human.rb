@@ -5,9 +5,6 @@ class Human < Player
 
   def initialize(userinteraction, markers, name)
     super(userinteraction, markers, name)
-    # @ui = userinteraction
-    # @markers = markers
-    # @name = name
   end
 
   def set_spot
@@ -30,20 +27,4 @@ class Human < Player
     end
     hum
   end
-
-  # def define_symbol(hum)
-  #   return @markers.o if hum == @markers.x
-
-  #   @markers.x
-  # end
-
-  # def move(board, symbol)
-  #   spot = set_spot
-  #   until board.valid(board.get_value(spot))
-  #     @ui.space_taken
-  #     spot = set_spot
-  #   end
-  #   board.insert_value(spot, symbol) if board.valid(board.get_value(spot))
-  #   # @ui.great_move
-  # end
 end

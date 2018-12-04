@@ -5,9 +5,6 @@ class Computer < Player
 
   def initialize(userinteraction, markers, name, difficulty)
     super(userinteraction, markers, name)
-    # @markers = markers
-    # @name = name
-    # @ui = userinteraction
     @difficulty = difficulty
   end
 
@@ -24,12 +21,6 @@ class Computer < Player
   def choose_symbol
     @markers.x
   end
-
-  # def define_symbol(hum)
-  #   return @markers.o if hum == @markers.x
-
-  #   @markers.x
-  # end
 
   def move(board, symbol)
     define_opponent(symbol)

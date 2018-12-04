@@ -13,7 +13,6 @@ class Player
       spot = set_spot
     end
     board.insert_value(spot, symbol) if board.valid(board.get_value(spot))
-    # @ui.great_move
   end
 
   def define_symbol(hum)
