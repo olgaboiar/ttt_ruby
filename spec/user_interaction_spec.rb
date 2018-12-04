@@ -309,16 +309,16 @@ describe UserInteraction do
     end
   end
 
-  describe ' #choose_translation(lang)' do
-    it 'should choose ukrainian yaml file for translations if 2 is passed as an argument' do
-      actual = @input.choose_translation('2')
-      # expect(actual).to be_falsey
-      expect(actual).to eq(YAML.load_file(File.join(__dir__, '../lib/lang/ua.yml')))
-    end
-    it 'should choose ukrainian yaml file for translations if 2 is passed as an argument' do
-      actual = @input.choose_translation('1')
-      # expect(actual).to be_falsey
-      expect(actual).to eq(YAML.load_file(File.join(__dir__, '../lib/lang/en.yml')))
-    end
-  end
+  # describe ' #choose_translation(lang)' do
+  #   it 'should choose ukrainian yaml file for translations if 2 is passed as an argument' do
+  #     actual = @input.choose_translation('2')
+  #     # expect(actual).to be_falsey
+  #     expect(actual).to eq(YAML.load_file(File.join(__dir__, '../lib/lang/ua.yml')))
+  #   end
+  #   it 'should choose ukrainian yaml file for translations if 2 is passed as an argument' do
+  #     actual = @input.choose_translation('1')
+  #     # expect(actual).to be_falsey
+  #     expect(actual).to eq(YAML.load_file(File.join(__dir__, '../lib/lang/en.yml')))
+  #   end
+  # end
 end
