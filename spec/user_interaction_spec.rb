@@ -15,9 +15,9 @@ describe UserInteraction do
   end
 
   describe '#choose_lang' do
-    it "should return the string prompting user to choose the language" do
+    it 'should return the string prompting user to choose the language' do
       expect do
-          @input.choose_lang
+        @input.choose_lang
       end.to output("Choose the language: 1 - English, 2 - Ukrainian. \nEnter 1 or 2:\n").to_stdout
     end
   end
