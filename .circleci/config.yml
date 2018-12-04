@@ -9,7 +9,8 @@ jobs:
     #   only:
     #     - code-submission
     #     - master
-
+    environment:
+      CC_TEST_REPORTER_ID: f147d59414997f259b308178e2e9a49f8a4d470b859dff5906cc8c19102dccb0
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
@@ -30,12 +31,16 @@ jobs:
           - v1-dependencies-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-
+      - run: sudo apt-get install ruby-full cmake
       - run:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
+      - run:
+          name: Install Code Climate Test Reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -44,7 +49,10 @@ jobs:
       # Database setup
       # - run: bundle exec rake db:create
       # - run: bundle exec rake db:schema:load
-
+      - run:
+          name: rubocop
+          command: |
+            bundle exec rubocop
       # run tests!
       - run:
           name: run tests
@@ -57,10 +65,17 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
+      - run:
+          name: Code Climate Test Coverage
+          command: |
+            ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
 
-      # collect reports
+      # collect reports and send to code climate
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+      - deploy:
+          command: |
+            ./cc-test-reporter sum-coverage --output - --parts $CIRCLE_NODE_TOTAL coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -

@@ -1,8 +1,8 @@
+# This class handles markers X and O
 class Marker
-
   def initialize
-    @x_marker = "X"
-    @o_marker = "O"
+    @x_marker = 'X'
+    @o_marker = 'O'
   end
 
   def x
@@ -12,5 +12,4 @@ class Marker
   def o
     @o_marker
   end
-
 end

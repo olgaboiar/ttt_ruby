@@ -1,11 +1,10 @@
-require_relative "console/marker"
-require_relative "console/setup"
-require_relative "board_size"
-
+require_relative 'console/marker'
+require_relative 'console/setup'
+require_relative 'board_size'
+# This class hadles the playing board. !move win into tictactoe
 class Board
-
-  def initialize(ui, markers)
-    @ui = ui
+  def initialize(userinteraction, markers)
+    @ui = userinteraction
     @markers = markers
     board_size = BoardSize.new(@ui)
     @setup = Setup.new(board_size.set_size)
@@ -21,9 +20,9 @@ class Board
   def win
     @setup.win
   end
-  
+
   def tie
-    return true if self.available_spots.length == 0
+    return true if available_spots.length.zero?
   end
 
   def game_over
@@ -50,5 +49,4 @@ class Board
     end
     available_spots
   end
-
 end

@@ -1,12 +1,16 @@
+# This class is responsible to print out the board properly into console
+# Note for future refactoring: get rid of this class, move board printing
+# related methods to ui class, board array method to board class, and win
+# method to tictactoe class
 class Setup
-
   def initialize(argument)
     @argument = argument.to_i
+    @index = @argument - 1
   end
 
   def create_board_array
     @board = []
-    for i in (1..@argument * @argument)
+    (1..@argument * @argument).each do |i|
       @board << i.to_s
     end
     @board
@@ -14,38 +18,70 @@ class Setup
 
   def print_board
     matrix = @board.each_slice(@argument).to_a
-    puts " "
-    n = @argument - 1
-    for i in (0..n)
-      for j in (0..n)
-        print "  #{matrix[i][j]} |" if matrix[i][j].length == 1
-        print " #{matrix[i][j]} |" if matrix[i][j].length > 1
-      end
-      print "\n"
-      puts "----+" * @argument
+    create_output(matrix)
+  end
+
+  def create_output(matrix)
+    puts ' '
+    (0..@index).each do |i|
+      row = matrix[i]
+      create_cells(row)
+      create_border
     end
+  end
+
+  def create_cells(row)
+    (0..@index).each do |j|
+      print "  #{row[j]} |" if row[j].length == 1
+      print " #{row[j]} |" if row[j].length > 1
+    end
+  end
+
+  def create_border
+    print "\n"
+    puts '----+' * @argument
   end
 
   def win
     matrix = @board.each_slice(@argument).to_a
-    n = @argument - 1
     verticals = Array.new(@argument) { Array.new(@argument) }
-    diagonals = Array.new(2) { Array.new}
-    for i in (0..n)
-      return true if matrix[i].uniq.length == 1
+    diagonals = Array.new(2) { [] }
+    create_vert_diag(matrix, verticals, diagonals)
+    return true if win_horizontals(matrix)
+    return true if win_verticals(verticals)
+    return true if win_diagonals(diagonals)
+
+    false
+  end
+
+  def create_vert_diag(matrix, verticals, diagonals)
+    (0..@index).each do |i|
       diagonals[0] << matrix[i][i]
-      diagonals[1] << matrix[i][n - i]
-      for j in (0..n)
+      diagonals[1] << matrix[i][@index - i]
+      (0..@index).each do |j|
         verticals[j][i] = matrix[i][j]
       end
     end
-    for i in (0..n)
-      return true if verticals[i].uniq.length == 1
-    end
-    for i in (0..1)
-      return true if diagonals[i].uniq.length == 1
-    end
-    return false
   end
 
+  def win_horizontals(matrix)
+    (0..@index).each do |i|
+      return true if matrix[i].uniq.length == 1
+    end
+    false
+  end
+
+  def win_verticals(verticals)
+    (0..@index).each do |i|
+      return true if verticals[i].uniq.length == 1
+    end
+    false
+  end
+
+  def win_diagonals(diagonals)
+    (0..1).each do |i|
+      return true if diagonals[i].uniq.length == 1
+    end
+    false
+  end
 end

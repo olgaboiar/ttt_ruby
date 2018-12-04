@@ -1,16 +1,16 @@
+# This class handles the size of the board. Move functionality to board class???
 class BoardSize
-  
-  def initialize(ui)
-    @ui = ui
+  def initialize(userinteraction)
+    @ui = userinteraction
   end
 
   def set_size
     size = nil
     until size
       @ui.choosing_size
-      argument = @ui.get_input
+      argument = @ui.read_input
       size = @ui.check_size(argument)
     end
-    return size
+    size
   end
 end

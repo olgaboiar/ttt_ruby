@@ -1,4 +1,8 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rspec"
-gem "rspec_junit_formatter"
+gem 'pronto'
+gem 'pronto-flay', require: false
+gem 'pronto-rubocop', require: false
+gem 'rspec'
+gem 'rspec_junit_formatter'
+gem 'simplecov', require: false, group: :test

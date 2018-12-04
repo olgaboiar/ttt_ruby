@@ -1,8 +1,7 @@
 require 'yaml'
-
+# This class handles all console user interaction, all inputs and outputs
 class UserInteraction
-    
-  def get_input
+  def read_input
     gets.chomp
   end
 
@@ -11,11 +10,11 @@ class UserInteraction
   end
 
   def valid_lang(lang)
-    return true if lang.to_i < 3 and lang.to_i > 0
+    return true if lang.to_i < 3 && lang.to_i > 0
   end
 
   def valid(spot)
-    return true if spot.to_i < 17 and spot.to_i > 0
+    return true if spot.to_i < 17 && spot.to_i > 0
   end
 
   def positive(response)
@@ -27,14 +26,12 @@ class UserInteraction
   end
 
   def check_size(argument)
-    return argument if argument.to_i <= 9 and argument.to_i > 1
-    return nil
+    return argument if argument.to_i <= 9 && argument.to_i > 1
   end
 
-  def set_translation(language)
-    @trans = YAML::load_file(File.join(__dir__, '../languages/en.yml')) if language == "1"
-    @trans = YAML::load_file(File.join(__dir__, '../languages/ua.yml')) if language == "2"
-
+  def choose_translation(lang)
+    @trans = YAML.load_file(File.join(__dir__, '../lang/en.yml')) if lang == '1'
+    @trans = YAML.load_file(File.join(__dir__, '../lang/ua.yml')) if lang == '2'
   end
 
   def greeting
@@ -50,7 +47,7 @@ class UserInteraction
   end
 
   def first(player)
-    puts player + " " + @trans[:first]
+    puts player + ' ' + @trans[:first]
   end
 
   def board
@@ -74,7 +71,7 @@ class UserInteraction
   end
 
   def computer_move(spot)
-    puts @trans[:computer_move] + " " + spot.to_s + " " + @trans[:your_move]
+    puts @trans[:computer_move] + ' ' + spot.to_s + ' ' + @trans[:your_move]
   end
 
   def great_move
@@ -86,7 +83,7 @@ class UserInteraction
   end
 
   def declaring_winner(winner)
-    puts winner + " " +  @trans[:declaring_winner]
+    puts winner + ' ' + @trans[:declaring_winner]
   end
 
   def game_over

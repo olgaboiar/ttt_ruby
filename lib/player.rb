@@ -1,13 +1,13 @@
+# Parent class for Human and Computer
 class Player
+  attr_accessor :input, :name
 
-  attr_accessor :name
-
-  def initialize(name)
+  def initialize(userinteraction, name)
+    @ui = userinteraction
     @name = name
   end
 
   def move(board, symbol)
     board.insert_value(spot, symbol)
   end
-
 end
