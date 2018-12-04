@@ -23,7 +23,7 @@ class Game
     @markers = Marker.new
     mode = set_mode
     @name = set_user_name
-    define_difficulty_level(@name) if @ui.computer(mode) or @ui.computer_human(mode)
+    define_difficulty_level(@name) unless @ui.human(mode)
     human_vs_computer if @ui.computer_human(mode)
     human_vs_human if @ui.human(mode)
     computer_vs_computer if @ui.computer(mode)
