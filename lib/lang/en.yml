@@ -2,8 +2,9 @@
 :first: goes first!
 :game_mode: Choose the game mode. Enter 1 for Human vs Computer, 2 for Human vs Human, or 3 for Computer vs Computer
 :user_name: Enter your name
-:other_user_name: Enter the name of the other player
-:difficulty_level: Choose the difficulty level of the game. Enter 1 for Easy and 2 for Hard
+:def_player_st: Is player
+:def_player_end: Human or Computer? Enter 1 for Human and 2 for Computer
+:difficulty_level: Choose the difficulty level for computer logic. Enter 1 for Easy and 2 for Hard
 :board: Here is your playing board!
 :choosing_symbol: Choose the symbol you want to play with - X or O? Remember X goes first!
 :entering_number: Enter a number from 1 to 9 to make your move

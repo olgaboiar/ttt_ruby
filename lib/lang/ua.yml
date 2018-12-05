@@ -2,7 +2,8 @@
 :first: ходить першим!
 :game_mode: Оберіть тип гри. Введіть 1 для гри між людиною і компютером, 2 для гри між людьми, або 3 для гри між компютерами
 :user_name: Введіть своє імя
-:other_user_name: Введіть імя другого гравця
+:def_player_st: Is player
+:def_player_end: Human or Computer? Enter 1 for Human and 2 for Computer
 :difficulty_level: Оберіть рівень складності гри. Введіть 1 для легкого рівня або 2 для складного
 :board: Ось ваше поле гри!
 :choosing_symbol: Обери символ, яким ти хочеш грати - X чи O?

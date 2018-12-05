@@ -4,6 +4,7 @@ require_relative 'board'
 require_relative 'tictactoe'
 require_relative 'human'
 require_relative 'computer'
+require_relative 'player'
 # This class handles the set up of the game
 class Game
   def start
@@ -21,31 +22,24 @@ class Game
 
   def create_players
     @markers = Marker.new
-    mode = set_mode
-    @name = set_user_name
-    define_difficulty_level(@name) unless @ui.human(mode)
-    human_vs_computer if @ui.computer_human(mode)
-    human_vs_human if @ui.human(mode)
-    computer_vs_computer if @ui.computer(mode)
+    @player1 = define_player(1)
+    @player2 = define_player(2)
     @players = [@player1, @player2]
     @marker1 = @player1.choose_symbol
     @marker2 = @player2.define_symbol(@marker1)
   end
 
-  def human_vs_computer
-    @player1 = Human.new(@ui, @markers, @name)
-    @player2 = Computer.new(@ui, @markers, 'Computer', @difficulty)
-  end
+  def define_player(num)
+    player = nil
+    until player
+      @ui.define_player(num)
+      player = @ui.read_input
+      break if @ui.valid_player(player)
 
-  def human_vs_human
-    @player1 = Human.new(@ui, @markers, @name)
-    name2 = set_user_name
-    @player2 = Human.new(@ui, @markers, name2)
-  end
-
-  def computer_vs_computer
-    @player1 = Computer.new(@ui, @markers, 'Computer1', @difficulty)
-    @player2 = Computer.new(@ui, @markers, 'Computer2', @difficulty)
+      player = nil
+    end
+    helper = Player.new(@ui, @markers)
+    helper.create_player(player)
   end
 
   def ask_to_play
@@ -60,41 +54,6 @@ class Game
     language = Language.new(@ui)
     lang = language.set_lang
     @ui.choose_translation(lang)
-  end
-
-  def set_user_name
-    human_name = nil
-    @ui.user_name
-    until human_name
-      human_name = @ui.read_input
-      return human_name if @ui.valid_name(human_name)
-
-      @ui.user_name
-      human_name = nil
-    end
-  end
-
-  def set_mode
-    mode = nil
-    until mode
-      @ui.game_mode
-      mode = @ui.read_input
-      return mode if @ui.valid_mode(mode)
-
-      mode = nil
-    end
-  end
-
-  def define_difficulty_level(name)
-    @difficulty = nil
-    @ui.difficulty_level(name)
-    until @difficulty
-      @difficulty = @ui.read_input.to_i
-      return @difficulty if @ui.valid_difficulty(@difficulty)
-
-      @ui.difficulty_level
-      @difficulty = nil
-    end
   end
 
   def quit

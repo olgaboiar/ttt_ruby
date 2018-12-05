@@ -4,7 +4,8 @@ class Human < Player
   attr_accessor :input, :markers, :name
 
   def initialize(userinteraction, markers, name)
-    super(userinteraction, markers, name)
+    super(userinteraction, markers)
+    @name = name
   end
 
   def set_spot

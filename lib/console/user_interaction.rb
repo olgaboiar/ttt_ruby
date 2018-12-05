@@ -17,6 +17,10 @@ class UserInteraction
     return true if difficulty.to_i < 3 && difficulty.to_i > 0
   end
 
+  def valid_player(player)
+    return true if player.to_i < 3 && player.to_i > 0
+  end
+
   def valid_mode(mode)
     return true if mode.to_i < 4 && mode.to_i > 0
   end
@@ -74,8 +78,12 @@ class UserInteraction
     puts @trans[:other_user_name]
   end
 
-  def difficulty_level(name)
-    puts name + ', ' + @trans[:difficulty_level]
+  def define_player(num)
+    puts @trans[:def_player_st] + ' ' + num.to_s + ' ' + @trans[:def_player_end]
+  end
+
+  def difficulty_level
+    puts @trans[:difficulty_level]
   end
 
   def first(player)
