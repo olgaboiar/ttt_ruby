@@ -29,6 +29,41 @@ describe Board do
     end
   end
 
+  describe '#game_over' do
+    it 'should return false when board is empty' do
+      actual = @board.game_over
+      expect(actual).to be_falsey
+    end
+    it 'should return false when no winning position is reached' do
+      @board.insert_value(1, 'X')
+      @board.insert_value(2, 'O')
+      actual = @board.game_over
+      expect(actual).to be_falsey
+    end
+    it 'should return true when horizontal winning position is reached' do
+      @board.insert_value(1, 'X')
+      @board.insert_value(4, 'O')
+      @board.insert_value(0, 'X')
+      @board.insert_value(6, 'O')
+      @board.insert_value(2, 'X')
+      actual = @board.game_over
+      expect(actual).to be_truthy
+    end
+    it 'should return true when tie is reached' do
+      @board.insert_value(1, 'X')
+      @board.insert_value(0, 'O')
+      @board.insert_value(4, 'X')
+      @board.insert_value(6, 'O')
+      @board.insert_value(7, 'X')
+      @board.insert_value(3, 'O')
+      @board.insert_value(2, 'X')
+      @board.insert_value(5, 'O')
+      @board.insert_value(8, 'X')
+      actual = @board.game_over
+      expect(actual).to be_truthy
+    end
+  end
+
   describe '#win' do
     it 'should return false when board is empty' do
       actual = @board.win
