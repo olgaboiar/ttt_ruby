@@ -15,8 +15,8 @@ class Player
     board.insert_value(spot, symbol) if board.valid(board.get_value(spot))
   end
 
-  def define_symbol(hum)
-    return @markers.o if hum == @markers.x
+  def define_symbol(marker)
+    return @markers.o if marker == @markers.x
 
     @markers.x
   end

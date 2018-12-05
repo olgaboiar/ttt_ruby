@@ -11,7 +11,7 @@ class Game
     create_players
     board = Board.new(@ui, @markers)
     tictactoe = TicTacToe.new(@players, board, @ui)
-    tictactoe.set_current_player(@hum, @com, @player1, @player2)
+    tictactoe.set_current_player(@marker1, @marker2, @player1, @player2)
     @current_player = tictactoe.current_player
     @ui.board
     board.print_board
@@ -28,8 +28,8 @@ class Game
     human_vs_human if @ui.human(mode)
     computer_vs_computer if @ui.computer(mode)
     @players = [@player1, @player2]
-    @hum = @player1.choose_symbol
-    @com = @player2.define_symbol(@hum)
+    @marker1 = @player1.choose_symbol
+    @marker2 = @player2.define_symbol(@marker1)
   end
 
   def human_vs_computer

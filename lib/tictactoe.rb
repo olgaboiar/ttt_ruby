@@ -9,9 +9,9 @@ class TicTacToe
     @ui = userinteraction
   end
 
-  def set_current_player(hum, com, human, computer)
-    set_current_marker(hum, com)
-    if hum == 'X'
+  def set_current_player(marker1, marker2, human, computer)
+    set_current_marker(marker1, marker2)
+    if marker1 == 'X'
       @current_player = human
       @other_player = computer
     else
@@ -20,13 +20,13 @@ class TicTacToe
     end
   end
 
-  def set_current_marker(hum, com)
-    if hum == 'X'
-      @current_marker = hum
-      @other_marker = com
+  def set_current_marker(marker1, marker2)
+    if marker1 == 'X'
+      @current_marker = marker1
+      @other_marker = marker2
     else
-      @current_marker = com
-      @other_marker = hum
+      @current_marker = marker2
+      @other_marker = marker1
     end
   end
 
