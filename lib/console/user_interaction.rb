@@ -21,10 +21,6 @@ class UserInteraction
     return true if player.to_i < 3 && player.to_i > 0
   end
 
-  def valid_mode(mode)
-    return true if mode.to_i < 4 && mode.to_i > 0
-  end
-
   def valid_name(name)
     return true if name =~ /(^[\p{L}\s'.-]+$)/
   end
@@ -35,18 +31,6 @@ class UserInteraction
 
   def positive(response)
     return true if response =~ /^[y|Y]$/
-  end
-
-  def computer_human(mode)
-    return true if mode == '1'
-  end
-
-  def human(mode)
-    return true if mode == '2'
-  end
-
-  def computer(mode)
-    return true if mode == '3'
   end
 
   def check_symbol(symbol)
@@ -66,16 +50,8 @@ class UserInteraction
     puts @trans[:greeting]
   end
 
-  def game_mode
-    puts @trans[:game_mode]
-  end
-
   def user_name
     puts @trans[:user_name]
-  end
-
-  def set_other_user_name
-    puts @trans[:other_user_name]
   end
 
   def define_player(num)
