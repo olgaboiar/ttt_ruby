@@ -31,7 +31,7 @@ describe Computer do
   end
 
   describe ' #move(board, symbol)' do
-    it 'should call sleep for 2 seconds' do
+    it 'place O on the 9th cell' do
       allow(Computer).to receive(:sleep)
       allow_any_instance_of(BoardSize).to receive(:set_size).and_return('3')
       allow_any_instance_of(UserInteraction).to receive(:computer_move)
