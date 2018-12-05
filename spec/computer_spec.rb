@@ -29,4 +29,17 @@ describe Computer do
       expect(actual).to eq('X')
     end
   end
+
+  describe ' #move(board, symbol)' do
+    it 'should call sleep for 2 seconds' do
+      allow(Computer).to receive(:sleep)
+      allow_any_instance_of(BoardSize).to receive(:set_size).and_return('3')
+      allow_any_instance_of(UserInteraction).to receive(:computer_move)
+      @board = Board.new(@input, @markers)
+      board_size = BoardSize.new(@input)
+      @setup = Setup.new(board_size.set_size)
+      @computer.move(@board, 'O')
+      expect(@board.get_value(8)).to eq('O')
+    end
+  end
 end
