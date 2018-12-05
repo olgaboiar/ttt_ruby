@@ -305,7 +305,7 @@ describe UserInteraction do
     it 'should return english string stating who goes first' do
       @input.choose_translation('1')
       expect do
-        player = "Computer"
+        player = 'Computer'
         @input.first(player)
       end.to output("Computer goes first!\n").to_stdout
     end
