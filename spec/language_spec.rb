@@ -19,5 +19,10 @@ describe Language do
       actual = @language.set_lang
       expect(actual).to eq('2')
     end
+    it 'should return 2 as a players language choice' do
+      allow_any_instance_of(UserInteraction).to receive(:read_input).and_return('3', '2')
+      actual = @language.set_lang
+      expect(actual).to eq('2')
+    end
   end
 end
