@@ -1,12 +1,12 @@
-# This class definies computer behavior
-class Computer
+require_relative 'player'
+# This class definies computer behavior and Inherits from player class
+class Computer < Player
   attr_accessor :markers, :opponent, :name
 
   def initialize(userinteraction, markers, name, difficulty)
-    @markers = markers
-    @name = name
-    @ui = userinteraction
+    super(userinteraction, markers)
     @difficulty = difficulty
+    @name = name
   end
 
   def define_opponent(symbol)
@@ -19,9 +19,7 @@ class Computer
     end
   end
 
-  def define_symbol(hum)
-    return @markers.o if hum == @markers.x
-
+  def choose_symbol
     @markers.x
   end
 
@@ -29,6 +27,7 @@ class Computer
     define_opponent(symbol)
     set_best_move(board, @opponent) if @difficulty == 2
     @best_move = get_random_move(board) if @difficulty == 1
+    sleep(2)
     board.insert_value(@best_move.to_i - 1, symbol)
     @ui.computer_move(@best_move)
   end

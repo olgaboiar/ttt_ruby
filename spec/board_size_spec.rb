@@ -4,7 +4,7 @@ require_relative '../lib/board_size'
 describe BoardSize do
   before do
     @input = UserInteraction.new
-    allow_any_instance_of(Language).to receive(:set_lang).and_return('1')
+    # allow_any_instance_of(Language).to receive(:set_lang).and_return('1')
     allow_any_instance_of(UserInteraction).to receive(:choosing_size)
   end
 

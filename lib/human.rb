@@ -1,9 +1,10 @@
-# This class defines Human player behavior
-class Human
-  attr_accessor :input, :name
+require_relative 'player'
+# This class defines Human player behavior and inherites from Player class
+class Human < Player
+  attr_accessor :input, :markers, :name
 
-  def initialize(userinteraction, name)
-    @ui = userinteraction
+  def initialize(userinteraction, markers, name)
+    super(userinteraction, markers)
     @name = name
   end
 
@@ -18,7 +19,7 @@ class Human
     end
   end
 
-  def set_symbol
+  def choose_symbol
     hum = nil
     until hum
       @ui.choosing_symbol
@@ -26,15 +27,5 @@ class Human
       hum = @ui.check_symbol(symbol)
     end
     hum
-  end
-
-  def move(board, symbol)
-    spot = set_spot
-    until board.valid(board.get_value(spot))
-      @ui.space_taken
-      spot = set_spot
-    end
-    board.insert_value(spot, symbol) if board.valid(board.get_value(spot))
-    # @ui.great_move
   end
 end

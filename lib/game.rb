@@ -4,6 +4,7 @@ require_relative 'board'
 require_relative 'tictactoe'
 require_relative 'human'
 require_relative 'computer'
+require_relative 'player'
 # This class handles the set up of the game
 class Game
   def start
@@ -11,7 +12,7 @@ class Game
     create_players
     board = Board.new(@ui, @markers)
     tictactoe = TicTacToe.new(@players, board, @ui)
-    tictactoe.set_current_player(@hum, @com, @human, @computer)
+    tictactoe.set_current_player(@marker1, @marker2, @player1, @player2)
     @current_player = tictactoe.current_player
     @ui.board
     board.print_board
@@ -21,13 +22,24 @@ class Game
 
   def create_players
     @markers = Marker.new
-    set_user_name
-    @human = Human.new(@ui, @human_name)
-    set_difficulty_level
-    @computer = Computer.new(@ui, @markers, 'Computer', @difficulty)
-    @players = [@human, @computer]
-    @hum = @human.set_symbol
-    @com = @computer.define_symbol(@hum)
+    @player1 = define_player(1)
+    @player2 = define_player(2)
+    @players = [@player1, @player2]
+    @marker1 = @player1.choose_symbol
+    @marker2 = @player2.define_symbol(@marker1)
+  end
+
+  def define_player(num)
+    player = nil
+    until player
+      @ui.define_player(num)
+      player = @ui.read_input
+      break if @ui.valid_player(player)
+
+      player = nil
+    end
+    helper = Player.new(@ui, @markers)
+    helper.create_player(player)
   end
 
   def ask_to_play
@@ -42,18 +54,6 @@ class Game
     language = Language.new(@ui)
     lang = language.set_lang
     @ui.choose_translation(lang)
-  end
-
-  def set_user_name
-    @ui.user_name
-    @human_name = @ui.read_input
-    @human_name
-  end
-
-  def set_difficulty_level
-    @ui.difficulty_level
-    @difficulty = @ui.read_input.to_i
-    @difficulty
   end
 
   def quit

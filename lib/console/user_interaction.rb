@@ -13,6 +13,18 @@ class UserInteraction
     return true if lang.to_i < 3 && lang.to_i > 0
   end
 
+  def valid_difficulty(difficulty)
+    return true if difficulty.to_i < 3 && difficulty.to_i > 0
+  end
+
+  def valid_player(player)
+    return true if player.to_i < 3 && player.to_i > 0
+  end
+
+  def valid_name(name)
+    return true if name =~ /(^[\p{L}\s'.-]+$)/
+  end
+
   def valid(spot)
     return true if spot.to_i < 17 && spot.to_i > 0
   end
@@ -40,6 +52,10 @@ class UserInteraction
 
   def user_name
     puts @trans[:user_name]
+  end
+
+  def define_player(num)
+    puts @trans[:def_player_st] + ' ' + num.to_s + ' ' + @trans[:def_player_end]
   end
 
   def difficulty_level

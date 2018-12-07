@@ -1,7 +1,7 @@
 require_relative 'console/user_interaction'
 # This class handles everything related to tictactoe game rules
 class TicTacToe
-  attr_reader :current_player
+  attr_reader :current_player, :current_marker
 
   def initialize(players, board, userinteraction)
     @players = players
@@ -9,37 +9,49 @@ class TicTacToe
     @ui = userinteraction
   end
 
-  def set_current_player(hum, com, human, computer)
-    set_current_marker(hum, com)
-    if hum == 'X'
-      @current_player = human
-      @other_player = computer
+  def set_current_player(marker1, marker2, player1, player2)
+    set_current_marker(marker1, marker2)
+    if marker1 == 'X'
+      @current_player = player1
+      @other_player = player2
     else
-      @current_player = computer
-      @other_player = human
+      @current_player = player2
+      @other_player = player1
     end
   end
 
-  def set_current_marker(hum, com)
-    if hum == 'X'
-      @current_marker = hum
-      @other_marker = com
+  def set_current_marker(marker1, marker2)
+    if marker1 == 'X'
+      @current_marker = marker1
+      @other_marker = marker2
     else
-      @current_marker = com
-      @other_marker = hum
+      @current_marker = marker2
+      @other_marker = marker1
     end
   end
 
   def play(board)
-    until board.game_over
+    until game_over(board)
       @current_player.move(board, @current_marker)
       board.print_board
       @current_marker, @other_marker = @other_marker, @current_marker
       @current_player, @other_player = @other_player, @current_player
     end
     @ui.game_over
-    declare_winner if board.win
-    @ui.tie if board.tie
+    declare_winner if win(board)
+    @ui.tie if tie(board)
+  end
+
+  def game_over(board)
+    win(board) || tie(board)
+  end
+
+  def win(board)
+    board.win
+  end
+
+  def tie(board)
+    return true if board.available_spots.length.zero?
   end
 
   def print_board
