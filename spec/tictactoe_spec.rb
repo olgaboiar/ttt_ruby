@@ -47,6 +47,9 @@ describe TicTacToe do
   end
 
   describe '#play(board)' do
+    # before do
+    #   @current_player = @player1
+    # end
     it 'the board is tie' do
       @board.insert_value(2, 'O')
       @board.insert_value(0, 'X')
