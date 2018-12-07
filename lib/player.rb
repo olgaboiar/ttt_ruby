@@ -1,10 +1,8 @@
 # This class definies player behavior
 class Player
-  attr_accessor :input, :name
-
-  def initialize(userinteraction, name)
+  def initialize(userinteraction, markers)
     @ui = userinteraction
-    @name = name
+    @markers = markers
   end
 
   def move(board, symbol)
