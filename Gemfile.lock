@@ -87,6 +87,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    simplecov-shields-badge (0.1.0)
+      simplecov (~> 0.15)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.19.4)
@@ -102,6 +104,7 @@ DEPENDENCIES
   rspec
   rspec_junit_formatter
   simplecov
+  simplecov-shields-badge
 
 BUNDLED WITH
    1.16.6

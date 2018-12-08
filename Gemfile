@@ -6,3 +6,4 @@ gem 'pronto-rubocop', require: false
 gem 'rspec'
 gem 'rspec_junit_formatter'
 gem 'simplecov', require: false, group: :test
+gem 'simplecov-shields-badge', require: false
