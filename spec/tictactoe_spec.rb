@@ -47,6 +47,9 @@ describe TicTacToe do
   end
 
   describe '#play(board)' do
+    # before do
+    #   @current_player = @player1
+    # end
     it 'the board is tie' do
       @board.insert_value(2, 'O')
       @board.insert_value(0, 'X')
@@ -60,6 +63,26 @@ describe TicTacToe do
       expect do
         @tictactoe.play(@board)
       end.to output("Game over!\nIt's a tie! Let's play again!\n").to_stdout
+    end
+
+    it ' ' do
+      @board.insert_value(0, 'X')
+      @board.insert_value(4, 'O')
+      @board.insert_value(1, 'X')
+      @board.insert_value(2, 'O')
+      @board.insert_value(7, 'X')
+      @board.insert_value(3, 'O')
+      @board.insert_value(8, 'X')
+      marker1 = 'X'
+      marker2 = 'O'
+      markers = Marker.new
+      player1 = Computer.new(@input, markers, 'ii', 2)
+      player2 = Computer.new(@input, markers, 'Ivan', 2)
+      allow_any_instance_of(UserInteraction).to receive(:entering_number)
+      @tictactoe.set_current_player(marker1, marker2, player1, player2)
+      expect do
+        @tictactoe.play(@board)
+      end.to output("Computer just made a move on cell 7 It's your turn now!\n \n  X |  X |  O |\n----+----+----+\n  O |  O |  6 |\n----+----+----+\n  X |  X |  X |\n----+----+----+\nGame over!\nX wins!\n").to_stdout
     end
   end
 

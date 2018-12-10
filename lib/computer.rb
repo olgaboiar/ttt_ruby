@@ -41,6 +41,7 @@ class Computer < Player
       current_move = next_player(last_move)
       potential_board.insert_value(as.to_i - 1, current_move)
       scores.push set_best_move(potential_board, current_move, depth + 1)
+      # puts scores.join(",")
       potential_move(moves, potential_board, as)
     end
     return_score(current_move, scores, moves)
