@@ -12,7 +12,7 @@ class UserInteraction
   end
 
   def valid_lang(lang)
-    return true if lang.to_i < 3 && lang.positive?
+    return true if lang.to_i < 3 && lang.to_i.positive?
   end
 
   def valid_difficulty(difficulty)
@@ -20,7 +20,7 @@ class UserInteraction
   end
 
   def valid_player(player)
-    return true if player.to_i < 3 && player.positive?
+    return true if player.to_i < 3 && player.to_i.positive?
   end
 
   def valid_name(name)
