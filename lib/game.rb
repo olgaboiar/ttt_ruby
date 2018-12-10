@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'console/user_interaction'
 require_relative 'language'
 require_relative 'board'

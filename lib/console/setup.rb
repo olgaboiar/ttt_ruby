@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class is responsible to print out the board properly into console
 # Note for future refactoring: get rid of this class, move board printing
 # related methods to ui class, board array method to board class, and win

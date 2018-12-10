@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'player'
 # This class defines Human player behavior and inherites from Player class
 class Human < Player

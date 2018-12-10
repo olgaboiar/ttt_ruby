@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'player'
 # This class definies computer behavior and Inherits from player class
 class Computer < Player
