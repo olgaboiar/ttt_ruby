@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'console/marker'
 require_relative 'console/setup'
 require_relative 'board_size'

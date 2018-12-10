@@ -1,4 +1,6 @@
 require 'yaml'
+# frozen_string_literal: true
+
 # This class handles all console user interaction, all inputs and outputs
 class UserInteraction
   def read_input
@@ -10,15 +12,15 @@ class UserInteraction
   end
 
   def valid_lang(lang)
-    return true if lang.to_i < 3 && lang.to_i > 0
+    return true if lang.to_i < 3 && lang.to_i.positive?
   end
 
   def valid_difficulty(difficulty)
-    return true if difficulty.to_i < 3 && difficulty.to_i > 0
+    return true if difficulty.to_i < 3 && difficulty.to_i.positive?
   end
 
   def valid_player(player)
-    return true if player.to_i < 3 && player.to_i > 0
+    return true if player.to_i < 3 && player.to_i.positive?
   end
 
   def valid_name(name)
@@ -26,7 +28,7 @@ class UserInteraction
   end
 
   def valid(spot)
-    return true if spot.to_i < 17 && spot.to_i > 0
+    return true if spot.to_i < 17 && spot.to_i.positive?
   end
 
   def positive(response)

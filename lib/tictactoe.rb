@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'console/user_interaction'
 # This class handles everything related to tictactoe game rules
 class TicTacToe

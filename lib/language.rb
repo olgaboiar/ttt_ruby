@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class allows user to select a language
 class Language
   def initialize(userinteraction)

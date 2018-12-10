@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class handles the size of the board. Move functionality to board class???
 class BoardSize
   def initialize(userinteraction)

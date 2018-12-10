@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class definies player behavior
 class Player
   def initialize(userinteraction, markers)

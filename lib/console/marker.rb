@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class handles markers X and O
 class Marker
   attr_accessor :x, :o
