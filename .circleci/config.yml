@@ -10,7 +10,7 @@ jobs:
     #     - code-submission
     #     - master
     # environment:
-    #   CC_TEST_REPORTER_ID: f147d59414997f259b308178e2e9a49f8a4d470b859dff5906cc8c19102dccb0
+    #   CC_TEST_REPORTER_ID: CC_TEST_REPORTER
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
@@ -49,10 +49,29 @@ jobs:
       # Database setup
       # - run: bundle exec rake db:create
       # - run: bundle exec rake db:schema:load
-      # - run:
-      #     name: rubocop
-      #     command: |
-      #       bundle exec rubocop
+      - run:
+          name: rubocop
+          command: |
+            bundle exec rubocop
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/*_spec.rb" | circleci tests split --split-by=timings)"
+            
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
       # # run tests!
       # - run:
       #     name: run tests
